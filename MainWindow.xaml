@@ -6,39 +6,31 @@
         xmlns:local="clr-namespace:ComputerGraphics"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <DockPanel>
+    <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Width="25">
             <Menu HorizontalAlignment="Center">
                 <MenuItem>
-                    <MenuItem.Header>
-                        L
-                    </MenuItem.Header>
+                    <MenuItem.Header>L</MenuItem.Header>
                     <MenuItem Header="New Project" ></MenuItem>
                     <MenuItem Header="Open Project" >
                         <MenuItem Header="WinForms"></MenuItem>
                         <MenuItem Header="WPF" ></MenuItem>
                     </MenuItem>
                     <Separator />
-                    <MenuItem Header="Exit" ></MenuItem>
+                    <MenuItem Click="MenuItem_Click"></MenuItem>
                 </MenuItem>
             </Menu>
         </StackPanel>
-
-        <!--<ToolBarTray DockPanel.Dock="Left" Width="25" Orientation="Vertical" Background="White">
-            <ToolBar ToolBarTray.IsLocked="True" Width="25" Background="White" Visibility="Visible">
-                <Menu>
-                    <MenuItem Header="L" Background="White">
-                        <MenuItem Header="New Project" ></MenuItem>
-                        <MenuItem Header="Open Project" >
-                            <MenuItem Header="WinForms"></MenuItem>
-                            <MenuItem Header="WPF" ></MenuItem>
-                        </MenuItem>
-                        <Separator />
-                        <MenuItem Header="Exit" ></MenuItem>
-                    </MenuItem>
-                </Menu>
-            </ToolBar>
-        </ToolBarTray>-->
-        <Button></Button>
+        <Frame x:Name="SettingsFrame" DockPanel.Dock="Right" Width="170"></Frame>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Canvas x:Name="AppCanvas" HorizontalAlignment="Left" Width="1000" ClipToBounds="True">
+                <Rectangle Canvas.Left="0" Fill="Red" Width="10" Height="10"/>
+                <Rectangle Canvas.Left="10" Fill="Azure" Width="10" Height="10"/>
+                <Rectangle Canvas.Left="20" Fill="Black" Width="10" Height="10"/>
+                <Rectangle Canvas.Left="30" Fill="Cornsilk" Width="10" Height="10"/>
+                <Rectangle Canvas.Left="40" Fill="DarkCyan" Width="10" Height="10"/>
+                <Rectangle Canvas.Left="740" Fill="Red" Width="10" Height="10"/>
+            </Canvas>
+        </ScrollViewer>
     </DockPanel>
 </Window>
