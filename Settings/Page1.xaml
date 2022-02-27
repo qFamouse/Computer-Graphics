@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ComputerGraphics.Settings"
+      xmlns:pixi="clr-namespace:ColorPicker;assembly=ColorPicker"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="170"
       Background="White"
@@ -25,5 +26,30 @@
                 <TextBox Grid.Column="2"></TextBox>
             </Grid>
         </GroupBox>
+        <GroupBox Header="Block Size">
+            <Grid>
+                <ComboBox>
+                    <ComboBoxItem IsSelected="True">2x2</ComboBoxItem>
+                    <ComboBoxItem>4x4</ComboBoxItem>
+                    <ComboBoxItem>8x8</ComboBoxItem>
+                </ComboBox>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Colors">
+            <StackPanel>
+                <pixi:PortableColorPicker Height="20" SelectedColor="DarkGreen"></pixi:PortableColorPicker>
+                <pixi:PortableColorPicker Height="20" SelectedColor="DarkOrange"></pixi:PortableColorPicker>
+                <pixi:PortableColorPicker Height="20" SelectedColor="DarkRed"></pixi:PortableColorPicker>
+                <pixi:PortableColorPicker Height="20" SelectedColor="DarkKhaki"></pixi:PortableColorPicker>
+            </StackPanel>
+        </GroupBox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="0.3*"/>
+            </Grid.ColumnDefinitions>
+            <RepeatButton Grid.Column="1">Drow</RepeatButton>
+        </Grid>
     </StackPanel>
 </Page>

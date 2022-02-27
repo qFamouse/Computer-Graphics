@@ -24,10 +24,5 @@ namespace ComputerGraphics
         {
             InitializeComponent();
         }
-
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            SettingsFrame.Content = new TestPage(MainCanvas);
-        }
     }
 }

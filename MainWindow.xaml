@@ -17,11 +17,11 @@
                         <MenuItem Header="WPF" ></MenuItem>
                     </MenuItem>
                     <Separator />
-                    <MenuItem Click="MenuItem_Click"></MenuItem>
+                    <MenuItem>111</MenuItem>
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <Frame x:Name="SettingsFrame" DockPanel.Dock="Right" Width="170"></Frame>
+        <Frame x:Name="SettingsFrame" DockPanel.Dock="Right" Width="170" Source="/Settings/Page1.xaml"></Frame>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <Canvas x:Name="AppCanvas" HorizontalAlignment="Left" Width="1000" ClipToBounds="True">
                 <Rectangle Canvas.Left="0" Fill="Red" Width="10" Height="10"/>
