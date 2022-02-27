@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,11 +16,11 @@ using System.Windows.Shapes;
 namespace ComputerGraphics.Settings
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for Mosaic.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class Mosaic : Page
     {
-        public Page1()
+        public Mosaic()
         {
             InitializeComponent();
         }
