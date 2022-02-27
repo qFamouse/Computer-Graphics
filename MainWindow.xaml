@@ -4,24 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerGraphics"
+        xmlns:settings="clr-namespace:ComputerGraphics.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel LastChildFill="True">
         <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Width="25">
             <Menu HorizontalAlignment="Center">
                 <MenuItem>
-                    <MenuItem.Header>L</MenuItem.Header>
-                    <MenuItem Header="New Project" ></MenuItem>
-                    <MenuItem Header="Open Project" >
-                        <MenuItem Header="WinForms"></MenuItem>
-                        <MenuItem Header="WPF" ></MenuItem>
+                    <MenuItem.Header>T</MenuItem.Header>
+                    <MenuItem Header="#1">
+                        <MenuItem Header="Mosaic" Command="{Binding MosaicCommand}"></MenuItem>
                     </MenuItem>
-                    <Separator />
-                    <MenuItem>111</MenuItem>
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <Frame x:Name="SettingsFrame" DockPanel.Dock="Right" Width="170" Source="/Settings/Page1.xaml"></Frame>
+        <Frame NavigationUIVisibility="Hidden" DockPanel.Dock="Right" Width="170" Content="{Binding CurrentSettings, Mode=TwoWay}"></Frame>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <Canvas x:Name="AppCanvas" HorizontalAlignment="Left" Width="1000" ClipToBounds="True">
                 <Rectangle Canvas.Left="0" Fill="Red" Width="10" Height="10"/>
