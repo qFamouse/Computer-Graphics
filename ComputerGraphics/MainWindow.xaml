@@ -5,22 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerGraphics"
         xmlns:viewModels="clr-namespace:ComputerGraphics.ViewModel"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
         <viewModels:MainViewModel/>
     </Window.DataContext>
     <DockPanel LastChildFill="True">
-        <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Width="25">
-            <Menu HorizontalAlignment="Center">
-                <MenuItem>
-                    <MenuItem.Header>T</MenuItem.Header>
-                    <MenuItem Header="#1">
-                        <MenuItem Header="Mosaic" Command="{Binding MosaicCommand}"></MenuItem>
-                    </MenuItem>
-                </MenuItem>
-            </Menu>
-        </StackPanel>
+        <ToolBarTray DockPanel.Dock="Left" Orientation="Vertical" IsLocked="True">
+            <ToolBar>
+                <Button
+                    Content="{materialDesign:PackIcon Kind=Puzzle, Size=30}"
+                    ToolTip="Mosaic"
+                    Padding="5"
+                    Command="{Binding MosaicCommand}"/>
+            </ToolBar>
+        </ToolBarTray>
         <Frame NavigationUIVisibility="Hidden" DockPanel.Dock="Right" Width="170" Content="{Binding CurrentSettings, Mode=TwoWay}"></Frame>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <Canvas x:Name="AppCanvas" HorizontalAlignment="Left" Width="1000" ClipToBounds="True">
