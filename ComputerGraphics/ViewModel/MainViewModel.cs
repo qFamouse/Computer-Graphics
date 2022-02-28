@@ -22,6 +22,8 @@ namespace ComputerGraphics.ViewModel
                 OnPropertyChanged("CurrentSettings");
             }
         }
+
+        public Canvas Canvas { get; set; }
         public Page Mosaic { get; } = new Mosaic();
 
         public MainViewModel()
