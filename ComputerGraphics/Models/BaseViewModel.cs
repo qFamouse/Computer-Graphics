@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ComputerGraphics.Model
+namespace ComputerGraphics.Models
 {
     class BaseViewModel : INotifyPropertyChanged
     {
