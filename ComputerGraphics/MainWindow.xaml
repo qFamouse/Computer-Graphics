@@ -7,21 +7,26 @@
         xmlns:viewModels="clr-namespace:ComputerGraphics.ViewModel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="850" Width="850">
     <Window.DataContext>
         <viewModels:MainViewModel/>
     </Window.DataContext>
     <DockPanel LastChildFill="True">
-        <ToolBarTray DockPanel.Dock="Left" Orientation="Vertical" IsLocked="True">
-            <ToolBar>
-                <Button
-                    Content="{materialDesign:PackIcon Kind=Puzzle, Size=30}"
-                    ToolTip="Mosaic"
-                    Padding="5"
-                    Command="{Binding MosaicCommand}"/>
-            </ToolBar>
-        </ToolBarTray>
-        <Frame NavigationUIVisibility="Hidden" DockPanel.Dock="Right" Width="170" Content="{Binding CurrentSettings, Mode=TwoWay}"></Frame>
+        <materialDesign:Card DockPanel.Dock="Left">
+            <ToolBarTray Orientation="Vertical" IsLocked="True">
+                <ToolBar>
+                    <Button
+                        Content="{materialDesign:PackIcon Kind=Puzzle, Size=30}"
+                        ToolTip="Mosaic"
+                        Padding="5"
+                        Command="{Binding MosaicCommand}"/>
+                </ToolBar>
+            </ToolBarTray>
+        </materialDesign:Card>
+        <materialDesign:Card DockPanel.Dock="Right">
+            <Frame NavigationUIVisibility="Hidden" Width="170" Content="{Binding CurrentSettings, Mode=TwoWay}"></Frame>
+        </materialDesign:Card>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <Canvas x:Name="AppCanvas" HorizontalAlignment="Left" Width="1000" ClipToBounds="True">
                 <Rectangle Canvas.Left="0" Fill="Red" Width="10" Height="10"/>
