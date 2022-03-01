@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ColorPicker;
 using ComputerGraphics.Models;
@@ -83,6 +84,38 @@ namespace ComputerGraphics.ViewModel
                             
                         }
                     }
+                });
+            }
+        }
+
+        public RelayCommand OptimizedDrawCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    Canvas.Children.Clear();
+
+                    WriteableBitmap writeableBitmap = BitmapFactory.New((int)Width + 100, (int)Height + 100);
+                    var image = new Image
+                    {
+                        Source = writeableBitmap
+                    };
+
+                    using (writeableBitmap.GetBitmapContext())
+                    {
+                        Random random = new Random();
+                        for (int y = 0; y < Height; y += BlockSize)
+                        {
+                            for (int x = 0; x < Width; x += BlockSize)
+                            {
+                                var color = MosaicColors[random.Next(0, MosaicColors.Count)];
+                                writeableBitmap.FillRectangle(x, y, x + BlockSize, y + BlockSize, color);
+                            }
+                        }
+                    }
+
+                    Canvas.Children.Add(image);
                 });
             }
         }

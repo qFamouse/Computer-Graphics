@@ -47,8 +47,7 @@
                 </ComboBox>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Colors" 
-                  Margin="0 0 0 10">
+        <GroupBox Header="Colors">
             <StackPanel>
                 <pixi:PortableColorPicker Height="20" SelectedColor="{Binding MosaicColors[0], Mode=TwoWay}"></pixi:PortableColorPicker>
                 <pixi:PortableColorPicker Height="20" SelectedColor="{Binding MosaicColors[1], Mode=TwoWay}"></pixi:PortableColorPicker>
@@ -58,12 +57,20 @@
         </GroupBox>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.2*"/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition MinHeight="60"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
 
-            <RepeatButton Grid.Column="1" Command="{Binding DrawCommand}">Draw</RepeatButton>
+            <RepeatButton Grid.Row="0" Grid.Column="1" Command="{Binding DrawCommand}">Draw</RepeatButton>
+
+            <materialDesign:Badged Grid.Row="1" Grid.Column="1" Badge="Optimized" BadgeColorZoneMode="Dark" HorizontalAlignment="Center">
+                <RepeatButton Command="{Binding OptimizedDrawCommand}">Image Draw</RepeatButton>
+            </materialDesign:Badged>
         </Grid>
     </StackPanel>
 </Page>
