@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ComputerGraphics"
+        xmlns:canv="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
         xmlns:viewModels="clr-namespace:ComputerGraphics.ViewModel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
@@ -27,15 +28,7 @@
         <materialDesign:Card DockPanel.Dock="Right">
             <Frame NavigationUIVisibility="Hidden" Width="170" Content="{Binding CurrentSettings, Mode=TwoWay}"></Frame>
         </materialDesign:Card>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Canvas x:Name="AppCanvas" HorizontalAlignment="Left" Width="1000" ClipToBounds="True">
-                <Rectangle Canvas.Left="0" Fill="Red" Width="10" Height="10"/>
-                <Rectangle Canvas.Left="10" Fill="Azure" Width="10" Height="10"/>
-                <Rectangle Canvas.Left="20" Fill="Black" Width="10" Height="10"/>
-                <Rectangle Canvas.Left="30" Fill="Cornsilk" Width="10" Height="10"/>
-                <Rectangle Canvas.Left="40" Fill="DarkCyan" Width="10" Height="10"/>
-                <Rectangle Canvas.Left="740" Fill="Red" Width="10" Height="10"/>
-            </Canvas>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Content="{Binding Canvas}">
         </ScrollViewer>
     </DockPanel>
 </Window>

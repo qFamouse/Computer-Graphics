@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using ComputerGraphics.Models;
 using ComputerGraphics.Settings;
 
@@ -23,12 +26,13 @@ namespace ComputerGraphics.ViewModel
             }
         }
 
-        public Canvas Canvas { get; set; }
+        public Canvas Canvas { get; }
+
         public Page Mosaic { get; } = new Mosaic();
 
         public MainViewModel()
         {
-            currentSettings = Mosaic;
+            Canvas = MainCanvas.GetInstance().Canvas;
         }
 
         public RelayCommand MosaicCommand

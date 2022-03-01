@@ -22,10 +22,10 @@ namespace ComputerGraphics
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Canvas AppCanvas { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-            (DataContext as MainViewModel).Canvas = AppCanvas;
         }
     }
 }
