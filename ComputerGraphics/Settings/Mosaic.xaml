@@ -7,6 +7,7 @@
       xmlns:pixi="clr-namespace:ColorPicker;assembly=ColorPicker"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:viewModel="clr-namespace:ComputerGraphics.ViewModel"
+      xmlns:converters="clr-namespace:ComputerGraphics.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="170"
       Title="Mosaic"
@@ -14,6 +15,9 @@
     <Page.DataContext>
         <viewModel:MosaicViewModel/>
     </Page.DataContext>
+    <Page.Resources>
+        <converters:DoubleToStringConverter x:Key="DoubleToStringConverter"/>
+    </Page.Resources>
     <StackPanel>
         <GroupBox Header="Mosaic Size">
             <Grid>
@@ -26,26 +30,29 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <TextBox Grid.Column="0" Text="{Binding Width}"></TextBox>
+                <TextBox Grid.Column="0" 
+                         Text="{Binding Width, Converter={StaticResource DoubleToStringConverter}, Mode=TwoWay}" 
+                         TextAlignment="Right"
+                         PreviewTextInput="NumberValidation_OnPreviewTextInput"></TextBox>
                 <TextBlock Grid.Column="1" VerticalAlignment="Center">x</TextBlock>
-                <TextBox Grid.Column="2" Text="{Binding Height}"></TextBox>
+                <TextBox Grid.Column="2"
+                         Text="{Binding Height, Converter={StaticResource DoubleToStringConverter}, Mode=TwoWay}"
+                         TextAlignment="Left"
+                         PreviewTextInput="NumberValidation_OnPreviewTextInput"></TextBox>
             </Grid>
         </GroupBox>
         <GroupBox Header="Block Size">
             <Grid>
-                <ComboBox>
-                    <ComboBoxItem IsSelected="True">2x2</ComboBoxItem>
-                    <ComboBoxItem>4x4</ComboBoxItem>
-                    <ComboBoxItem>8x8</ComboBoxItem>
+                <ComboBox HorizontalContentAlignment="Center" ItemsSource="{Binding BlockSizes}" SelectedValue="{Binding Path=BlockSize, Mode=TwoWay}">
                 </ComboBox>
             </Grid>
         </GroupBox>
         <GroupBox Header="Colors">
             <StackPanel>
-                <pixi:PortableColorPicker Height="20" SelectedColor="DarkGreen"></pixi:PortableColorPicker>
-                <pixi:PortableColorPicker Height="20" SelectedColor="DarkOrange"></pixi:PortableColorPicker>
-                <pixi:PortableColorPicker Height="20" SelectedColor="DarkRed"></pixi:PortableColorPicker>
-                <pixi:PortableColorPicker Height="20" SelectedColor="DarkKhaki"></pixi:PortableColorPicker>
+                <pixi:PortableColorPicker Height="20" SelectedColor="{Binding MosaicColors[0], Mode=TwoWay}"></pixi:PortableColorPicker>
+                <pixi:PortableColorPicker Height="20" SelectedColor="{Binding MosaicColors[1], Mode=TwoWay}"></pixi:PortableColorPicker>
+                <pixi:PortableColorPicker Height="20" SelectedColor="{Binding MosaicColors[2], Mode=TwoWay}"></pixi:PortableColorPicker>
+                <pixi:PortableColorPicker Height="20" SelectedColor="{Binding MosaicColors[3], Mode=TwoWay}"></pixi:PortableColorPicker>
             </StackPanel>
         </GroupBox>
         <Grid>
@@ -54,7 +61,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="0.3*"/>
             </Grid.ColumnDefinitions>
-            <RepeatButton Grid.Column="1">Drow</RepeatButton>
+            <RepeatButton Grid.Column="1" Command="{Binding DrawCommand}">Draw</RepeatButton>
         </Grid>
     </StackPanel>
 </Page>
