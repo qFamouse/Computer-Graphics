@@ -55,6 +55,15 @@ namespace ComputerGraphics.ViewModel
                 return new RelayCommand(obj =>
                 {
                     Canvas.Children.Clear();
+
+                    // Save colors to array (for the most performance)
+                    var colors = new SolidColorBrush[MosaicColors.Count];
+                    for (int i = 0; i < colors.Length; i++)
+                    {
+                        colors[i] = new SolidColorBrush(MosaicColors[i]);
+                    }
+
+                    // Drawing
                     Random random = new Random();
                     for (int i = 0; i < Height; i += BlockSize)
                     {
@@ -64,7 +73,7 @@ namespace ComputerGraphics.ViewModel
                             {
                                 Width = BlockSize,
                                 Height = BlockSize,
-                                Fill = new SolidColorBrush(MosaicColors[random.Next(0, MosaicColors.Count)])
+                                Fill = colors[random.Next(0, colors.Length)]
                             };
 
                             Canvas.SetTop(rect, i);
