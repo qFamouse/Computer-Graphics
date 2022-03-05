@@ -9,12 +9,9 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Computer Graphics" 
-        Icon="icon.ico"
-        MinWidth="850"
-        MinHeight="850"
-        Width="850"
-        Height="850">
+        Title="Computer Graphics" Icon="icon.ico"
+        MinWidth="850" MinHeight="850"
+        Width="850" Height="850">
     <Window.DataContext>
         <viewModels:MainViewModel/>
     </Window.DataContext>
