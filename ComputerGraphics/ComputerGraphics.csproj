@@ -73,14 +73,26 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\DoubleToStringConverter.cs" />
+    <Compile Include="Interfaces\IEasyObservable.cs" />
+    <Compile Include="Interfaces\IEasyObserver.cs" />
+    <Compile Include="Interfaces\IRgbColor.cs" />
+    <Compile Include="Interfaces\IYiqColor.cs" />
     <Compile Include="MainCanvas.cs" />
     <Compile Include="Models\BaseViewModel.cs" />
+    <Compile Include="Models\RgbEventManager.cs" />
     <Compile Include="Models\RelayCommand.cs" />
+    <Compile Include="Models\RgbColor.cs" />
+    <Compile Include="Models\YiqColor.cs" />
+    <Compile Include="Models\YiqEventManager.cs" />
     <Compile Include="Settings\Mosaic.xaml.cs">
       <DependentUpon>Mosaic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\ColorConverterViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MosaicViewModel.cs" />
+    <Compile Include="Windows\ColorConverter.xaml.cs">
+      <DependentUpon>ColorConverter.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,6 +106,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Settings\Mosaic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ColorConverter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

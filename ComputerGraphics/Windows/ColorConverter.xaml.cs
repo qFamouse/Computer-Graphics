@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComputerGraphics.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,12 @@ namespace ComputerGraphics.Windows
         public ColorConverter()
         {
             InitializeComponent();
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var context = DataContext as ColorConverterViewModel;
+            context.Update();
         }
     }
 }
