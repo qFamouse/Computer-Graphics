@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ComputerGraphics.ViewModel;
+using Windows = ComputerGraphics.Windows;
 
 namespace ComputerGraphics
 {
@@ -26,6 +27,14 @@ namespace ComputerGraphics
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void ShowColorConverter_Click(object sender, RoutedEventArgs e)
+        {
+            var colorConverter = new Windows.ColorConverter();
+            colorConverter.Owner = this;
+            colorConverter.Show();
         }
     }
 }

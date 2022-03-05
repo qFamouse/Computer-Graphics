@@ -24,6 +24,12 @@
                         ToolTip="Mosaic"
                         Padding="5"
                         Command="{Binding MosaicCommand}"/>
+
+                    <Button
+                        Content="{materialDesign:PackIcon Kind=Calculator, Size=30}"
+                        ToolTip="Color Converter"
+                        Padding="5"
+                        Click="ShowColorConverter_Click"/>
                 </ToolBar>
             </ToolBarTray>
         </materialDesign:Card>
