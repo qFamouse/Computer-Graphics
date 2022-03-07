@@ -20,6 +20,7 @@
     <Window.Resources>
         <!-- Disable any styles to TextBlock -->
         <Style TargetType="TextBox"/>
+        <converters:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
     </Window.Resources>
     <StackPanel>
         <TabControl FlowDirection="LeftToRight" Margin="0 0 0 20">
@@ -97,6 +98,12 @@
                 </StackPanel>
             </TabItem>
         </TabControl>
-        <pixi:ColorDisplay Width="100" Height="100" SelectedColor="{Binding SelectedColor}"></pixi:ColorDisplay>
+        <Rectangle 
+            Width="100" Height="100"
+            Fill="{Binding SelectedColor, Converter={StaticResource ColorToBrushConverter}}"
+            Stroke="Black" 
+            OpacityMask="Black" 
+            StrokeThickness="1"
+            ></Rectangle>
     </StackPanel>
 </Window>
