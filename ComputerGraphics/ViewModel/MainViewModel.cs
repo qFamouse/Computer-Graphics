@@ -29,6 +29,7 @@ namespace ComputerGraphics.ViewModel
         public Canvas Canvas { get; }
 
         public Page Mosaic { get; } = new Mosaic();
+        public Page OpenSave { get; } = new OpenSave();
 
         public MainViewModel()
         {
@@ -42,6 +43,17 @@ namespace ComputerGraphics.ViewModel
                 return new RelayCommand(obj =>
                 {
                     CurrentSettings = Mosaic;
+                });
+            }
+        }
+
+        public RelayCommand SaveCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    CurrentSettings = OpenSave;
                 });
             }
         }

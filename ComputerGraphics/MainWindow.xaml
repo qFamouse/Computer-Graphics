@@ -30,6 +30,12 @@
                         ToolTip="Color Converter"
                         Padding="5"
                         Click="ShowColorConverter_Click"/>
+
+                    <Button
+                        Content="{materialDesign:PackIcon Kind=ContentSaveAll, Size=30}"
+                        ToolTip="Canvas Saver"
+                        Padding="5"
+                        Command="{Binding SaveCommand}"/>
                 </ToolBar>
             </ToolBarTray>
         </materialDesign:Card>

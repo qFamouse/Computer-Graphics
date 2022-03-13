@@ -88,9 +88,14 @@
     <Compile Include="Settings\Mosaic.xaml.cs">
       <DependentUpon>Mosaic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Settings\OpenSave.xaml.cs">
+      <DependentUpon>OpenSave.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\BitmapViewModel.cs" />
     <Compile Include="ViewModel\ColorConverterViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MosaicViewModel.cs" />
+    <Compile Include="ViewModel\OpenSaveViewModel.cs" />
     <Compile Include="Windows\ColorConverter.xaml.cs">
       <DependentUpon>ColorConverter.xaml</DependentUpon>
     </Compile>
@@ -107,6 +112,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Settings\Mosaic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings\OpenSave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
