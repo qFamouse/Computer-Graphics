@@ -22,11 +22,12 @@ namespace ComputerGraphics.Utils.Images.Bitmap
 
     internal class BitmapInfoHeader
     {
+        public static ushort HeaderSize => INFO_HEADER_SIZE;
         /// <summary>
         /// Bitmap info header
         /// source: https://en.wikipedia.org/wiki/BMP_file_format
         /// </summary>
-        private const int INFO_HEADER_SIZE = 40;
+        private const ushort INFO_HEADER_SIZE = 40;
         private const int OFFSET_SIZE = 0; // Absolute 14
         private const int OFFSET_WIDTH = 4; // 18
         private const int OFFSET_HEIGHT = 8; // 22

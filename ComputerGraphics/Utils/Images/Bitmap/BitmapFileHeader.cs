@@ -8,11 +8,12 @@ namespace ComputerGraphics.Utils.Images.Bitmap
 {
     internal sealed class BitmapFileHeader
     {
+        public static ushort HeaderSize => FILE_HEADER_SIZE;
         /// <summary>
         /// Bitmap file header
         /// source: https://en.wikipedia.org/wiki/BMP_file_format
         /// </summary>
-        private const int FILE_HEADER_SIZE = 14;
+        private const ushort FILE_HEADER_SIZE = 14;
         private const int OFFSET_TYPE = 0;
         private const int OFFSET_SIZE = 2;
         private const int OFFSET_RESERVED1 = 6;
