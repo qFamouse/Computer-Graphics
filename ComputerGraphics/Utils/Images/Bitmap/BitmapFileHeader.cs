@@ -32,7 +32,8 @@ namespace ComputerGraphics.Utils.Images.Bitmap
         };
 
         /// <summary>
-        /// The file type. Default '0x42 0x4D' (BM)
+        /// The file type. 
+        /// Default '0x42 0x4D' (BM)
         /// </summary>
         public byte[] Type
         {
@@ -49,16 +50,18 @@ namespace ComputerGraphics.Utils.Images.Bitmap
         }
 
         /// <summary>
-        /// The size of the BMP file in bytes. Default 54
+        /// The size of the BMP file in bytes.
+        /// Default 54
         /// </summary>
-        public int Size
+        public uint Size
         {
-            get => BitConverter.ToInt32(_header, OFFSET_SIZE);
+            get => BitConverter.ToUInt32(_header, OFFSET_SIZE);
             set => BitConverter.GetBytes(value).CopyTo(_header, OFFSET_SIZE);
         }
 
         /// <summary>
-        /// Reserved. Default 0
+        /// Reserved.
+        /// Default 0
         /// </summary>
         public ushort Reserved1
         {
@@ -67,7 +70,8 @@ namespace ComputerGraphics.Utils.Images.Bitmap
         }
 
         /// <summary>
-        /// Reserved. Default 0
+        /// Reserved. 
+        /// Default 0
         /// </summary>
         public ushort Reserved2
         {
@@ -77,10 +81,11 @@ namespace ComputerGraphics.Utils.Images.Bitmap
 
         /// <summary>
         /// The offset, i.e. starting address, of the byte where the bitmap image data (pixel array) can be found.
+        /// Default 54
         /// </summary>
-        public int OffsetBits
+        public uint OffsetBits
         {
-            get => BitConverter.ToUInt16(_header, OFFSET_BITS);
+            get => BitConverter.ToUInt32(_header, OFFSET_BITS);
             set => BitConverter.GetBytes(value).CopyTo(_header, OFFSET_BITS);
         }
 
