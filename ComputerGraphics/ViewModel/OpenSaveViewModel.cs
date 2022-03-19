@@ -8,7 +8,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml.Serialization;
 using ComputerGraphics.Models;
+using ComputerGraphics.Utils.Images.Bitmap;
 using Microsoft.Win32;
 
 namespace ComputerGraphics.ViewModel
@@ -32,27 +34,18 @@ namespace ComputerGraphics.ViewModel
 
                     if (result == true)
                     {
-                        RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap(
-                            (int)Canvas.RenderSize.Width,
-                            (int)Canvas.RenderSize.Height,
-                            96d, 96d,
-                            PixelFormats.Default);
-
-                        renderTargetBitmap.Render(Canvas);
-
-                        MemoryStream memoryStream = new MemoryStream();
-                        BitmapEncoder encoder = DefineEncoder(Path.GetExtension(saveFileDialog.FileName));
-
-                        encoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
-                        encoder.Save(memoryStream);
-                        byte[] imageBytes = memoryStream.ToArray();
-
-                        using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.Create, FileAccess.Write))
+                        using (FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create, FileAccess.Write))
                         {
-                            foreach (var value in imageBytes)
-                            {
-                                fs.WriteByte(value);
-                            }
+                            RenderTargetBitmap renderTargetBitmap = new RenderTargetBitmap(
+                                (int)Canvas.RenderSize.Width,
+                                (int)Canvas.RenderSize.Height,
+                                96d, 96d,
+                                PixelFormats.Pbgra32);
+
+                            renderTargetBitmap.Render(Canvas);
+
+                            BitmapWriter bitmapWriter = new BitmapWriter(renderTargetBitmap);
+                            bitmapWriter.Write(fileStream);
                         }
                     }
                 });
