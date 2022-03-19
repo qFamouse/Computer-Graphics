@@ -27,17 +27,17 @@ namespace ComputerGraphics.Utils.Images.Bitmap
         /// source: https://en.wikipedia.org/wiki/BMP_file_format
         /// </summary>
         private const int INFO_HEADER_SIZE = 40;
-        private const int OFFSET_SIZE = 14;
-        private const int OFFSET_WIDTH = 18;
-        private const int OFFSET_HEIGHT = 22;
-        private const int OFFSET_PLANES = 26;
-        private const int OFFSET_BIT_COUNT = 28;
-        private const int OFFSET_COMPRESSION = 30;
-        private const int OFFSET_SIZE_IMAGE = 34;
-        private const int OFFSET_X_PELS_PER_METER = 38;
-        private const int OFFSET_Y_PELS_PER_METER = 42;
-        private const int OFFSET_CLR_USED = 46;
-        private const int OFFSET_CLR_IMPORTANT = 50;
+        private const int OFFSET_SIZE = 0; // Absolute 14
+        private const int OFFSET_WIDTH = 4; // 18
+        private const int OFFSET_HEIGHT = 8; // 22
+        private const int OFFSET_PLANES = 12; // 26
+        private const int OFFSET_BIT_COUNT = 14; // 28
+        private const int OFFSET_COMPRESSION = 16; // 30
+        private const int OFFSET_SIZE_IMAGE = 20; // 34
+        private const int OFFSET_X_PELS_PER_METER = 24; // 38
+        private const int OFFSET_Y_PELS_PER_METER = 28; // 42
+        private const int OFFSET_CLR_USED = 32; // 46
+        private const int OFFSET_CLR_IMPORTANT = 36; // 50
 
         /// <summary>
         /// Header data storage
@@ -167,5 +167,13 @@ namespace ComputerGraphics.Utils.Images.Bitmap
             set => BitConverter.GetBytes(value).CopyTo(_header, OFFSET_CLR_IMPORTANT);
         }
 
+        /// <summary>
+        /// Get header in byte array. There are no calculations, the data is already stored in an array
+        /// </summary>
+        /// <returns>Bmp header in byte array</returns>
+        public byte[] ToArray()
+        {
+            return _header;
+        }
     }
 }
