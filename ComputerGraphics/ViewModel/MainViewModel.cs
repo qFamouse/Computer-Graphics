@@ -34,6 +34,7 @@ namespace ComputerGraphics.ViewModel
         public MainViewModel()
         {
             Canvas = MainCanvas.GetInstance().Canvas;
+            CurrentSettings = OpenSave;
         }
 
         public RelayCommand MosaicCommand

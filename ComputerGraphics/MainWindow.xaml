@@ -10,8 +10,8 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Computer Graphics" Icon="icon.ico"
-        MinWidth="850" MinHeight="850"
-        Width="850" Height="850">
+        MinWidth="850" MinHeight="550"
+        Width="850" Height="550">
     <Window.DataContext>
         <viewModels:MainViewModel/>
     </Window.DataContext>

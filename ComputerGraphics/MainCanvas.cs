@@ -18,8 +18,8 @@ namespace ComputerGraphics
         {
             Canvas = new Canvas()
             {
-                Width = 10,
-                Height = 10,
+                Width = 400,
+                Height = 400,
                 HorizontalAlignment = HorizontalAlignment.Left,
                 VerticalAlignment = VerticalAlignment.Top,
                 ClipToBounds = true
