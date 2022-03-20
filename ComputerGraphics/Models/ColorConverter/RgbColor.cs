@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
-namespace ComputerGraphics.Models
+namespace ComputerGraphics.Models.ColorConverter
 {
     internal class RgbColor : IRgbColor, IEasyObserver<IYiqColor>
     {

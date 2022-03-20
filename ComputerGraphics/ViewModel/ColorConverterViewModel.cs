@@ -1,5 +1,6 @@
 ﻿using ComputerGraphics.Interfaces;
 using ComputerGraphics.Models;
+using ComputerGraphics.Models.ColorConverter;
 using System;
 using System.Collections.Generic;
 using System.Linq;

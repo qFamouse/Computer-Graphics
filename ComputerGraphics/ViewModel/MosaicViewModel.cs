@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ColorPicker;
 using ComputerGraphics.Models;
+using ComputerGraphics.Utils;
 
 namespace ComputerGraphics.ViewModel
 {

@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 using ComputerGraphics.Models;
+using ComputerGraphics.Utils;
 using ComputerGraphics.Utils.Images.Bitmap;
 using Microsoft.Win32;
 

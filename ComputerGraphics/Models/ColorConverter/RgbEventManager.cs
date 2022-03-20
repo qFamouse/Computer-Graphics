@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ComputerGraphics.Models
+namespace ComputerGraphics.Models.ColorConverter
 {
     internal class RgbEventManager : IEasyObservable<IRgbColor>, IRgbColor
     {
@@ -36,8 +36,8 @@ namespace ComputerGraphics.Models
         public byte B
         {
             get { return rgbColor.B; }
-            set 
-            { 
+            set
+            {
                 rgbColor.B = value;
                 NotifyObservers();
             }
@@ -64,7 +64,7 @@ namespace ComputerGraphics.Models
 
         public void NotifyObservers()
         {
-            foreach(IEasyObserver<IRgbColor> o in observers)
+            foreach (IEasyObserver<IRgbColor> o in observers)
             {
                 o.Update(rgbColor);
             }

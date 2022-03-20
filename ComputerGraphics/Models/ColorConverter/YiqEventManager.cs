@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ComputerGraphics.Models
+namespace ComputerGraphics.Models.ColorConverter
 {
     internal class YiqEventManager : IEasyObservable<IYiqColor>, IYiqColor
     {
