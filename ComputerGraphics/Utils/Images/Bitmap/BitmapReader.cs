@@ -5,28 +5,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-
 namespace ComputerGraphics.Utils.Images.Bitmap
 {
     internal sealed class BitmapReader
     {
-        public static BitmapSource Read(Stream stream)
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+        public Image Image { get; private set; }
+
+        public BitmapReader(Stream stream) => Read(stream);
+
+        public bool Read(Stream stream)
         {
             BitmapFileHeader bitmapFileHeader = ReadFileHeader(stream);
             BitmapInfoHeader bitmapInfoHeader = ReadInfoHeader(stream);
 
-            WriteableBitmap writeableBitmap = new WriteableBitmap(
-                bitmapInfoHeader.Width, bitmapInfoHeader.Height,
-                96, 96, PixelFormats.Bgr24, null);
+            Width = bitmapInfoHeader.Width;
+            Height = bitmapInfoHeader.Height;
+
+            WriteableBitmap writeableBitmap = new WriteableBitmap(Width, Height, 96, 96, PixelFormats.Bgr24, null);
 
             stream.Seek(bitmapFileHeader.OffsetBits, SeekOrigin.Begin);
-            int garbageWidth = bitmapInfoHeader.Width % 4;
+            int garbageWidth = Width % 4;
 
-            for (var y = bitmapInfoHeader.Height - 1; y >= 0; y--)
+            for (var y = Height - 1; y >= 0; y--)
             {
-                for (var x = 0; x < bitmapInfoHeader.Width; x++)
+                for (var x = 0; x < Width; x++)
                 {
                     var pixels = new byte[3];
                     stream.Read(pixels, 0, 3);
@@ -37,7 +44,9 @@ namespace ComputerGraphics.Utils.Images.Bitmap
                 stream.Read(new byte[garbageWidth], 0, garbageWidth); // Read garbage bytes
             }
 
-            return writeableBitmap;
+            Image = new Image { Source = writeableBitmap };
+
+            return true;
         }
 
         public static BitmapFileHeader ReadFileHeader(Stream stream)
