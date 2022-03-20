@@ -59,91 +59,23 @@ namespace ComputerGraphics.ViewModel
                 return new RelayCommand(obj =>
                 {
                     OpenFileDialog openFileDialog = new OpenFileDialog();
-                    byte[] imageBytes;
+                    openFileDialog.FileName = "Image"; // Default file name
+                    openFileDialog.DefaultExt = ".bmp"; // Default file extension
+                    openFileDialog.Filter = "Bitmap Image (.bmp)|*.bmp"; // Filter files by extension
 
                     if (openFileDialog.ShowDialog() == true)
                     {
-                        using (FileStream fs = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
+                        using (FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.Open, FileAccess.Read))
                         {
-                            imageBytes = new byte[fs.Length];
+                            var bitmapReader = new BitmapReader(fileStream);
 
-                            for (int i = 0; i < imageBytes.Length; i++)
-                            {
-                                imageBytes[i] = (byte) fs.ReadByte();
-                            }
+                            Canvas.Children.Clear();
+                            Canvas.Width = bitmapReader.Width;
+                            Canvas.Height = bitmapReader.Height;
+                            Canvas.Children.Add(bitmapReader.Image);
                         }
-
-
-
-  
-
-                        var width = BitConverter.ToInt32(new []{ imageBytes[18], imageBytes[19], imageBytes[20], imageBytes[21] }, 0);
-                        var height = BitConverter.ToInt32(new []{ imageBytes[22], imageBytes[23], imageBytes[24], imageBytes[25] }, 0);
-                        var pixelOffset = BitConverter.ToInt32(new[] { imageBytes[10], imageBytes[11], imageBytes[12], imageBytes[13] }, 0);
-
-                        //pixelOffset += 1;
-                        WriteableBitmap writeableBitmap =
-                            new WriteableBitmap(width, height, 96, 96, PixelFormats.Bgr24, null); // TODO: We need define PixelFormat for pixelOffset += 4; (we skip 1 byte, because get 32byte
-
-                        for (int y = 0; y < height; y++)
-                        {
-                            for (int x = 0; x < width; x++)
-                            {
-                                var rect = new Int32Rect(x, y, 1, 1);
-                                writeableBitmap.WritePixels(rect, imageBytes, 3, pixelOffset);
-                                pixelOffset += 4;
-                            }
-                        }
-
-                        //for (int y = height - 1; y > 0; y--)
-                        //{
-                        //    for (int x = width - 1; x > 0; x--)
-                        //    {
-                        //        var rect = new Int32Rect(x, y, 1, 1);
-                        //        writeableBitmap.WritePixels(rect, imageBytes, 3, pixelOffset);
-                        //        pixelOffset += 3;
-                        //    }
-                        //}
-
-                        var image = new Image
-                        {
-                            Source = writeableBitmap
-                        };
-
-                        Canvas.Children.Add(image);
-
-                        //for (int y = 720; y > 0; y--)
-                        //{
-                        //    for (int x = 1280; x > 0; x--)
-                        //    {
-                        //        var rect = new Int32Rect(x, y, 1, 1);
-
-                        //        byte[] rgb = new byte[3];
-
-                        //        for (int i = 0; i < 3; i++)
-                        //        {
-                        //            rgb[i] = (byte)fs.ReadByte();
-                        //        }
-
-                        //        wb.WritePixels(rect, rgb, 3, 0);
-                        //    }
-                        //}
                     }
-
-
-
                 });
-            }
-        }
-
-        private BitmapEncoder DefineEncoder(string extension)
-        {
-            switch (extension.ToLower())
-            {
-                case ".bmp":
-                    return new BmpBitmapEncoder();
-                default:
-                    throw new ArgumentOutOfRangeException(extension, "Unsupported extension");
             }
         }
     }

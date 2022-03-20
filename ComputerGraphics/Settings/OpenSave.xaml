@@ -13,7 +13,7 @@
         <viewModel:OpenSaveViewModel/>
     </Page.DataContext>
     <StackPanel>
-        <Button Command="{Binding OpenCommand}">Open</Button>
-        <Button Command="{Binding SaveCommand}">Save as</Button>
+        <Button Command="{Binding OpenCommand}" Margin="0 0 0 10">Open</Button>
+        <Button Command="{Binding SaveCommand}">Save</Button>
     </StackPanel>
 </Page>
