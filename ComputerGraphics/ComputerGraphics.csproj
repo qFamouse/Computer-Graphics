@@ -95,7 +95,6 @@
     <Compile Include="Utils\Images\Bitmap\BitmapInfoHeader.cs" />
     <Compile Include="Utils\Images\Bitmap\BitmapReader.cs" />
     <Compile Include="Utils\Images\Bitmap\BitmapWriter.cs" />
-    <Compile Include="ViewModel\BitmapViewModel.cs" />
     <Compile Include="ViewModel\ColorConverterViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MosaicViewModel.cs" />
