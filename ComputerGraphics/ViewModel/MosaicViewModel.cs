@@ -117,46 +117,6 @@ namespace ComputerGraphics.ViewModel
                     }
 
                     Canvas.Children.Add(image);
-
-
-
-                    // Stride = (width) x (bytes per pixel)
-                    //int stride = (int)writeableBitmap.PixelWidth * (writeableBitmap.Format.BitsPerPixel / 8);
-                    //byte[] pixels = writeableBitmap.ToByteArray();
-
-                    ////writeableBitmap.CopyPixels(pixels, stride, 0);
-
-
-                    //using (FileStream fs = new FileStream(@"C:\Users\Famouse\Desktop\aboba.bmp", FileMode.Create, FileAccess.ReadWrite))
-                    //{
-
-
-                    //    //fs.WriteByte(0x42);
-                    //    fs.WriteByte(0x4D);
-                    //    for (int i = 0; i < pixels.Length; i++)
-                    //    {
-                    //        fs.WriteByte(pixels[i]);
-                    //    }
-                    //}
-
-
-                    MemoryStream memoryStream = new MemoryStream();
-                    BitmapEncoder encoder = new BmpBitmapEncoder();
-                    encoder.Frames.Add(BitmapFrame.Create(writeableBitmap));
-                    encoder.Save(memoryStream);
-                    byte[] bytes = memoryStream.ToArray();
-
-
-
-                    using (FileStream fs = new FileStream(@"C:\Users\Famouse\Desktop\lol.bmp", FileMode.Create,
-                               FileAccess.ReadWrite))
-                    {
-                        foreach (var t in bytes)
-                        {
-                            fs.WriteByte(t);
-                        }
-                    }
-
                 });
             }
         }
