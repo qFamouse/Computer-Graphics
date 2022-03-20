@@ -53,11 +53,8 @@ namespace ComputerGraphics.Utils.Images.Bitmap
                     stream.WriteByte(color.G);
                     stream.WriteByte(color.R);
                 }
-                
-                for (int i = 0; i < garbageWidth; i++)
-                {
-                    stream.Write(BitConverter.GetBytes(1), 0, 2); // Write garbage variable
-                }
+
+                stream.Write(new byte[garbageWidth], 0, garbageWidth); // Write garbage bytes
             }
         }
 
