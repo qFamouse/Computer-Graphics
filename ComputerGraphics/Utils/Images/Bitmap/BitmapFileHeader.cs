@@ -23,14 +23,29 @@ namespace ComputerGraphics.Utils.Images.Bitmap
         /// <summary>
         /// Header data storage
         /// </summary>
-        private byte[] _header = new byte[FILE_HEADER_SIZE]
+        private byte[] _header;
+
+        public BitmapFileHeader(byte[] header)
         {
-            0x42, 0x4D,
-            54, 0, 0, 0,
-            0, 0,
-            0, 0,
-            54, 0, 0, 0
-        };
+            if (header.Length != FILE_HEADER_SIZE)
+            {
+                throw new ArgumentException("Invalid header size", nameof(header));
+            }
+
+            _header = (byte[])header.Clone();
+        }
+
+        public BitmapFileHeader()
+        {
+            _header = new byte[FILE_HEADER_SIZE]
+            {
+                0x42, 0x4D,
+                54, 0, 0, 0,
+                0, 0,
+                0, 0,
+                54, 0, 0, 0
+            };
+        }
 
         /// <summary>
         /// The file type. 

@@ -58,6 +58,34 @@ namespace ComputerGraphics.Utils.Images.Bitmap
             0, 0, 0, 0   // ClrImportant
         };
 
+        public BitmapInfoHeader(byte[] header)
+        {
+            if (header.Length != INFO_HEADER_SIZE)
+            {
+                throw new ArgumentException("Invalid header size", nameof(header));
+            }
+
+            _header = (byte[])header.Clone();
+        }
+
+        public BitmapInfoHeader()
+        {
+            _header = new byte[INFO_HEADER_SIZE]
+            {
+                40, 0, 0, 0, // Size
+                0, 0, 0, 0,  // Width
+                0, 0, 0, 0,  // Height
+                1, 0,        // Planes
+                24, 0,       // BitCount
+                0, 0, 0, 0,  // Compression
+                0, 0, 0, 0,  // SizeImage
+                0, 0, 0, 0,  // XPelsPerMeter
+                0, 0, 0, 0,  // YPelsPerMeter
+                0, 0, 0, 0,  // ClrUsed
+                0, 0, 0, 0   // ClrImportant
+            };
+        }
+
         /// <summary>
         /// The number of bytes required by the structure. 
         /// Default 40
