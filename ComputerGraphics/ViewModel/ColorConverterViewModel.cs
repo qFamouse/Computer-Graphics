@@ -1,11 +1,5 @@
-﻿using ComputerGraphics.Interfaces;
-using ComputerGraphics.Models;
+﻿using ComputerGraphics.Models;
 using ComputerGraphics.Models.ColorConverter;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 
 namespace ComputerGraphics.ViewModel
