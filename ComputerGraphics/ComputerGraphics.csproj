@@ -78,6 +78,8 @@
     <Compile Include="Interfaces\IEasyObserver.cs" />
     <Compile Include="Interfaces\IRgbColor.cs" />
     <Compile Include="Interfaces\IYiqColor.cs" />
+    <Compile Include="Utils\Coding\LZW\LzwCoding.cs" />
+    <Compile Include="Utils\Coding\LZW\LzwDictionary.cs" />
     <Compile Include="Utils\MainCanvas.cs" />
     <Compile Include="Models\BaseViewModel.cs" />
     <Compile Include="Models\ColorConverter\RgbEventManager.cs" />
