@@ -17,6 +17,7 @@ namespace ComputerGraphics.Utils.Coding.LZW
         
         public byte[] Encode(string text)
         {
+            ValidateEncode(text);
             var currentSequence = String.Empty;
             LinkedList<ushort> encodedCharacters = new LinkedList<ushort>();
 
@@ -54,6 +55,7 @@ namespace ComputerGraphics.Utils.Coding.LZW
 
         public string Decode(byte[] encodedCharacters)
         {
+            ValidateDecode(encodedCharacters);
             // Get firt sybmol
             ushort previousWordCode = BitConverter.ToUInt16(encodedCharacters, 0);
             _lzwDictionary.TryGetKey(previousWordCode, out string previousWordStr);
@@ -80,6 +82,27 @@ namespace ComputerGraphics.Utils.Coding.LZW
             }
 
             return decodedCharacters.ToString();
+        }
+
+        private void ValidateDecode(in byte[] encodedCharacters)
+        {
+            if (encodedCharacters is null)
+            {
+                throw new NullReferenceException("No find incoming data");
+            }
+
+            if ((encodedCharacters.Length & 1) == 1)
+            {
+                throw new ArgumentException("Invalid number of encoded bytes");
+            }
+        }
+
+        private void ValidateEncode(in string text)
+        {
+            if (String.IsNullOrEmpty(text))
+            {
+                throw new ArgumentException("Incoming data cannot be null");
+            }
         }
     }
 }
