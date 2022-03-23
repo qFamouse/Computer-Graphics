@@ -88,7 +88,7 @@ namespace ComputerGraphics.ViewModel
                 {
                     try
                     {
-                        byte[] encodedCharacters = OutputData.Split(' ').Select(s => Byte.Parse(s)).ToArray();
+                        byte[] encodedCharacters = InputData.Split(' ').Select(s => Byte.Parse(s)).ToArray();
                         OutputData = _currentCoding.Decode(encodedCharacters);
                     }
                     catch (NullReferenceException e)
