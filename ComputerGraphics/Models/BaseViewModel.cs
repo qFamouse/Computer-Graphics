@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace ComputerGraphics.Models
 {
@@ -16,6 +18,22 @@ namespace ComputerGraphics.Models
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public event EventHandler<MessageBoxEventArgs> MessageBoxRequest;
+        protected void MessageBox_Show(
+            Action<MessageBoxResult> resultAction,
+            string messageBoxText, 
+            string caption = "", 
+            MessageBoxButton button = MessageBoxButton.OK, 
+            MessageBoxImage icon = MessageBoxImage.None, 
+            MessageBoxResult defaultResult = MessageBoxResult.None, 
+            MessageBoxOptions options = MessageBoxOptions.None)
+        {
+            if (MessageBoxRequest != null)
+            {
+                MessageBoxRequest(this, new MessageBoxEventArgs(resultAction, messageBoxText, caption, button, icon, defaultResult, options));
+            }
         }
     }
 }
