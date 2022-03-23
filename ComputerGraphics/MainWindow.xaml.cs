@@ -21,5 +21,12 @@ namespace ComputerGraphics
             colorConverter.Owner = this;
             colorConverter.Show();
         }
+
+        private void ShowCodingWindow_Click(object sender, RoutedEventArgs e)
+        {
+            var coding = new Windows.Coding();
+            coding.Owner = this;
+            coding.Show();
+        }
     }
 }

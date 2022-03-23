@@ -36,6 +36,12 @@
                         ToolTip="Canvas Saver"
                         Padding="5"
                         Command="{Binding SaveCommand}"/>
+
+                    <Button
+                        Content="{materialDesign:PackIcon Kind=QrcodeScan, Size=30}"
+                        ToolTip="Data Compression"
+                        Padding="5"
+                        Click="ShowCodingWindow_Click"/>
                 </ToolBar>
             </ToolBarTray>
         </materialDesign:Card>
