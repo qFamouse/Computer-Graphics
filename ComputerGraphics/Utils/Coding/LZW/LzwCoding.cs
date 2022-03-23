@@ -40,7 +40,7 @@ namespace ComputerGraphics.Utils.Coding.LZW
                     }
                     else
                     {
-                        throw new AggregateException($"Can't get value from dictionary (Key: {currentSequence})");
+                        throw new AggregateException(String.Format("There is no such key in the dictionary (Key: '{0}')", String.IsNullOrEmpty(currentSequence) ? bufferSequence : currentSequence));
                     }
                 }
             }
