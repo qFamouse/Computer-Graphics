@@ -78,6 +78,9 @@
     <Compile Include="Interfaces\IEasyObserver.cs" />
     <Compile Include="Interfaces\IRgbColor.cs" />
     <Compile Include="Interfaces\IYiqColor.cs" />
+    <Compile Include="Models\MessageBoxEventArgs.cs" />
+    <Compile Include="Utils\Coding\Coding.cs" />
+    <Compile Include="Utils\Coding\ICodable.cs" />
     <Compile Include="Utils\Coding\LZW\LzwCoding.cs" />
     <Compile Include="Utils\Coding\LZW\LzwDictionary.cs" />
     <Compile Include="Utils\MainCanvas.cs" />
@@ -97,10 +100,14 @@
     <Compile Include="Utils\Images\Bitmap\BitmapInfoHeader.cs" />
     <Compile Include="Utils\Images\Bitmap\BitmapReader.cs" />
     <Compile Include="Utils\Images\Bitmap\BitmapWriter.cs" />
+    <Compile Include="ViewModel\CodingViewModel.cs" />
     <Compile Include="ViewModel\ColorConverterViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MosaicViewModel.cs" />
     <Compile Include="ViewModel\OpenSaveViewModel.cs" />
+    <Compile Include="Windows\Coding.xaml.cs">
+      <DependentUpon>Coding.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ColorConverter.xaml.cs">
       <DependentUpon>ColorConverter.xaml</DependentUpon>
     </Compile>
@@ -121,6 +128,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\OpenSave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Coding.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

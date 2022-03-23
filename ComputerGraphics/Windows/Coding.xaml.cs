@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ComputerGraphics.Models;
+using ComputerGraphics.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,13 @@ namespace ComputerGraphics.Windows
         public Coding()
         {
             InitializeComponent();
+
+            (this.DataContext as CodingViewModel).MessageBoxRequest += new EventHandler<MessageBoxEventArgs>(Coding_MessageBoxRequest);
+        }
+
+        private void Coding_MessageBoxRequest(object sender, MessageBoxEventArgs e)
+        {
+            e.Show(this);
         }
     }
 }

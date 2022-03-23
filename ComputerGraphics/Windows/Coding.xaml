@@ -29,21 +29,27 @@
         <materialDesign:Card Padding="8" Grid.Row="0" Grid.Column="0">
             <ScrollViewer VerticalScrollBarVisibility="Hidden">
                 <StackPanel HorizontalAlignment="Center">
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
-                    <RadioButton GroupName="CodingAlgorithm" Content="LZW"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="LZW" Command="{Binding SwitchToLzw}"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
+                    <RadioButton GroupName="CodingAlgorithm" Content="_______"/>
                 </StackPanel>
             </ScrollViewer>
         </materialDesign:Card>
@@ -55,7 +61,7 @@
                   Style="{StaticResource MaterialDesignGroupBox}"
                   materialDesign:ShadowAssist.ShadowDepth="Depth3"
                   BorderThickness="0">
-            <TextBox Text="Input"
+            <TextBox Text="{Binding InputData, Mode=TwoWay}"
                      VerticalScrollBarVisibility="Auto"
                      AcceptsReturn="True"
                      TextWrapping="Wrap"/>
@@ -67,7 +73,7 @@
                   Style="{StaticResource MaterialDesignGroupBox}"
                   materialDesign:ShadowAssist.ShadowDepth="Depth3"
                   BorderThickness="0">
-            <TextBox Text="Output"
+            <TextBox Text="{Binding OutputData, Mode=OneWay}"
                      IsReadOnly="True"
                      VerticalScrollBarVisibility="Auto"
                      AcceptsReturn="True"
@@ -82,11 +88,13 @@
             
             <Button Content="Encode"
                     Grid.Column="0"
-                    Margin="10 0 10 0"/>
+                    Margin="10 0 10 0"
+                    Command="{Binding EncodeCommand}"/>
             
             <Button Content="Decode" 
                     Grid.Column="2"
-                    Margin="10 0 10 0"/>
+                    Margin="10 0 10 0"
+                    Command="{Binding DecodeCommand}"/>
         </Grid>
     </Grid>
 </Window>
