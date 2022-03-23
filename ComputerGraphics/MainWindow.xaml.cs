@@ -15,7 +15,7 @@ namespace ComputerGraphics
 
         }
 
-        private void ShowColorConverter_Click(object sender, RoutedEventArgs e)
+        private void ShowColorConverterWindow_Click(object sender, RoutedEventArgs e)
         {
             var colorConverter = new Windows.ColorConverter();
             colorConverter.Owner = this;
