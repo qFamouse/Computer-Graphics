@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ComputerGraphics.Utils.Coding.LZW
 {
-    internal sealed class LzwCoding
+    internal sealed class LzwCoding : ICodable
     {
         private LzwDictionary _lzwDictionary;
 
