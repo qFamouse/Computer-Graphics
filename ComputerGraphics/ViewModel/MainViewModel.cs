@@ -23,6 +23,7 @@ namespace ComputerGraphics.ViewModel
 
         public Page Mosaic { get; } = new Mosaic();
         public Page OpenSave { get; } = new OpenSave();
+        public Page Primitives { get; } = new Primitives();
 
         public MainViewModel()
         {

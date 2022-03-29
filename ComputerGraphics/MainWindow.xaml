@@ -42,6 +42,12 @@
                         ToolTip="Data Compression"
                         Padding="5"
                         Click="ShowCodingWindow_Click"/>
+
+                    <Button
+                        Content="{materialDesign:PackIcon Kind=BlurOff, Size=30}"
+                        ToolTip="Primitives"
+                        Padding="5"
+                        />
                 </ToolBar>
             </ToolBarTray>
         </materialDesign:Card>
