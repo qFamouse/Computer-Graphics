@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace ComputerGraphics.Utils.Rasterization.Primitives.Line
 {
-    internal static class BresenhamsLineAlgorithm
+    internal static class LineBresenham
     {
         public static (int x, int y)[] GetPixels((double x, double y) start, (double x, double y) end)
         {
