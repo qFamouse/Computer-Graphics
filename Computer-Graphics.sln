@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerGraphics.Core", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerGraphics.UI", "ComputerGraphics.UI\ComputerGraphics.UI.csproj", "{DD09902D-7F6B-441E-954B-ABD5F68B8183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputerGraphics.Infrastructure", "ComputerGraphics.Infrastructure\ComputerGraphics.Infrastructure.csproj", "{C42462A7-E080-4AE8-8D4F-1E58F2C10922}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{DD09902D-7F6B-441E-954B-ABD5F68B8183}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD09902D-7F6B-441E-954B-ABD5F68B8183}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD09902D-7F6B-441E-954B-ABD5F68B8183}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C42462A7-E080-4AE8-8D4F-1E58F2C10922}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C42462A7-E080-4AE8-8D4F-1E58F2C10922}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C42462A7-E080-4AE8-8D4F-1E58F2C10922}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C42462A7-E080-4AE8-8D4F-1E58F2C10922}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
