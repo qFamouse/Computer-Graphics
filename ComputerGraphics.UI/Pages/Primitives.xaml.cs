@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ComputerGraphics.UI.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,16 @@ namespace ComputerGraphics.UI.Pages
         public Primitives()
         {
             InitializeComponent();
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var slider = sender as Slider;
+
+            if ((slider.DataContext as PrimitivesViewModel).RangeValidation() == false)
+            {
+                slider.Value = e.OldValue;
+            }
         }
     }
 }
