@@ -62,7 +62,7 @@
     <Compile Include="Algorithms\Rasterization\Ellipse\CircleBresenham.cs" />
     <Compile Include="Algorithms\Rasterization\Primitives\Line\LineBresenham.cs" />
     <Compile Include="Configurations\PrimitivesConfiguration.cs" />
-    <Compile Include="Entities\PrimitiveFigures.cs" />
+    <Compile Include="Entities\PrimitiveFigure.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -89,9 +89,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Algorithms\Rasterization\Primitives\Ellipse\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Primitives\option8.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

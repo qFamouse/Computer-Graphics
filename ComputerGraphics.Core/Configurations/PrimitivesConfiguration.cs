@@ -12,11 +12,10 @@ namespace ComputerGraphics.Core.Configurations
 {
     public static class PrimitivesConfiguration
     {
-        public static List<PrimitiveFigures> PrimitiveFigures { get; } = new List<PrimitiveFigures>()
+        public static List<PrimitiveOption> OptionsList { get; } = new List<PrimitiveOption>()
         {
-            new PrimitiveFigures()
+            new PrimitiveOption()
             {
-                Image = new Image().FromUri(new Uri(@"..\Resources\Images\Primitives\option8.png", UriKind.Relative)),
                 Name = "Option 8",
                 r1 = (φ) => (1 + Math.Cos(2 * φ) * Math.Cos(2 * φ)) / 5,
                 r2 = (φ) => (1 + Math.Sin(3 * φ) * Math.Sin(3 * φ)) / 2
