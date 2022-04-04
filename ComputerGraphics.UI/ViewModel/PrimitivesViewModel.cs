@@ -110,7 +110,7 @@ namespace ComputerGraphics.UI.ViewModel
                             circleR1 = Math.Min(circleR1, (int)Math.Sqrt(Math.Pow(x0, 2) + Math.Pow(y0, 2)));
                             circleR2 = Math.Max(circleR2, (int)Math.Sqrt(Math.Pow(x1, 2) + Math.Pow(y1, 2)));
 
-                            LineBresenham.Draw(x0, y0, x1, y1, (x, y) => writeableBitmap.SetPixel(centerDimension + x, centerDimension - y, Colors.Red));
+                            LineBresenham.Draw(x0, y0, x1, y1, (x, y) => writeableBitmap.SetPixel(centerDimension + x, centerDimension - y, HsvToRgb(φ, 100, 100)));
                         }
 
                         CircleBresenham.Draw(circleR1, centerDimension, centerDimension, (x, y) => writeableBitmap.SetPixel(x, y, Colors.Black));
@@ -123,5 +123,15 @@ namespace ComputerGraphics.UI.ViewModel
         }
 
         public PrimitivesViewModel() { }
+
+        private static Color HsvToRgb(double h, float s, float v)
+        {
+            Func<float, byte> f = delegate (float n)
+            {
+                double k = (n + h * 6) % 6;
+                return (byte)((v - (v * s * (Math.Max(0, Math.Min(Math.Min(k, 4 - k), 1))))) * 255);
+            };
+            return Color.FromRgb(f(5), f(3), f(1));
+        }
     }
 }
