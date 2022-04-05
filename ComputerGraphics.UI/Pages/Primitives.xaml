@@ -1,0 +1,66 @@
+﻿<Page x:Class="ComputerGraphics.UI.Pages.Primitives"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ComputerGraphics.UI.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:viewModels="clr-namespace:ComputerGraphics.UI.ViewModel"
+      mc:Ignorable="d" 
+      Title="Primitives"
+      d:DesignHeight="400" d:DesignWidth="170"
+      Background="White">
+    <Page.DataContext>
+        <viewModels:PrimitivesViewModel/>
+    </Page.DataContext>
+    <StackPanel>
+
+        <GroupBox Header="Select Option">
+            <ComboBox ItemsSource="{Binding Path=Options}"
+                  DisplayMemberPath="Name"
+                  SelectedValue="{Binding Path=SelectedOption}"/>
+        </GroupBox>
+
+        <GroupBox Header="Segments [φ1, φ2], Δφ">
+            <StackPanel>
+                <Slider Value="{Binding Path=φ1, Mode=TwoWay}" 
+                Minimum="0" Maximum="360"
+                Style="{StaticResource MaterialDesignDiscreteSlider}" 
+                TickFrequency="1"
+                TickPlacement="None"
+                materialDesign:SliderAssist.OnlyShowFocusVisualWhileDragging="True"
+                ValueChanged="Slider_ValueChanged">
+                </Slider>
+
+                <Slider Value="{Binding Path=φ2, Mode=TwoWay}"
+                Minimum="1" Maximum="360"
+                Style="{StaticResource MaterialDesignDiscreteSlider}" 
+                TickFrequency="1"
+                TickPlacement="None"
+                materialDesign:SliderAssist.OnlyShowFocusVisualWhileDragging="True"
+                ValueChanged="Slider_ValueChanged"/>
+
+                <Slider Value="{Binding Path=Δφ, Mode=TwoWay}"
+                Minimum="0.005" Maximum="10"
+                Style="{StaticResource MaterialDesignDiscreteSlider}" 
+                TickFrequency="0.001"
+                TickPlacement="None"
+                materialDesign:SliderAssist.OnlyShowFocusVisualWhileDragging="True"
+                ValueChanged="Slider_ValueChanged"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="Scale">
+            <Slider Value="{Binding Path=Scale, Mode=TwoWay}" 
+                Minimum="1" Maximum="1000"
+                Style="{StaticResource MaterialDesignDiscreteSlider}" 
+                TickFrequency="1"
+                TickPlacement="None"
+                materialDesign:SliderAssist.OnlyShowFocusVisualWhileDragging="True">
+            </Slider>
+        </GroupBox>
+
+        <Button Command="{Binding Draw}">Draw</Button>
+
+    </StackPanel>
+</Page>
