@@ -28,7 +28,7 @@ namespace ComputerGraphics.UI.ViewModel
         public MainViewModel()
         {
             Canvas = MainCanvas.GetInstance().Canvas;
-            CurrentSettings = Primitives;
+            CurrentSettings = OpenSave;
         }
 
         public RelayCommand MosaicCommand
