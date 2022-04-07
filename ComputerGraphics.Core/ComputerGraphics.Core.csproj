@@ -51,10 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\Clipping\CohenSutherland\CohenSutherland.cs" />
     <Compile Include="Algorithms\Coding\Coding.cs" />
     <Compile Include="Algorithms\Coding\ICodable.cs" />
     <Compile Include="Algorithms\Coding\LZW\LzwCoding.cs" />
     <Compile Include="Algorithms\Coding\LZW\LzwDictionary.cs" />
+    <Compile Include="Algorithms\Geometry\IntersectionPoint.cs" />
     <Compile Include="Algorithms\Images\Bitmap\BitmapFileHeader.cs" />
     <Compile Include="Algorithms\Images\Bitmap\BitmapInfoHeader.cs" />
     <Compile Include="Algorithms\Images\Bitmap\BitmapReader.cs" />
