@@ -57,15 +57,9 @@ namespace ComputerGraphics.Core.Algorithms.Clipping.CohenSutherland
             return code;
         }
 
-        public static bool operator ==(CohenSutherlandCode A, CohenSutherlandCode B)
-        {
-            return A.Code == B.Code;
-        }
+        public static bool operator ==(CohenSutherlandCode A, CohenSutherlandCode B) => A.Equals(B);
 
-        public static bool operator !=(CohenSutherlandCode A, CohenSutherlandCode B)
-        {
-            return A.Code != B.Code;
-        }
+        public static bool operator !=(CohenSutherlandCode A, CohenSutherlandCode B) => !A.Equals(B);
 
         public static CohenSutherlandCode operator &(CohenSutherlandCode A, CohenSutherlandCode B)
         {
@@ -75,6 +69,16 @@ namespace ComputerGraphics.Core.Algorithms.Clipping.CohenSutherland
         public static CohenSutherlandCode operator ^(CohenSutherlandCode A, CohenSutherlandCode B)
         {
             return new CohenSutherlandCode((byte)(A.Code ^ B.Code));
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is CohenSutherlandCode c && Code == c.Code;
+        }
+
+        public override int GetHashCode()
+        {
+            return Code.GetHashCode();
         }
     }
 }
