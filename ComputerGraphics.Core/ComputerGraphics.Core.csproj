@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\Clipping\CohenSutherland\CohenSutherland.cs" />
+    <Compile Include="Algorithms\Clipping\CohenSutherland\CohenSutherlandCode.cs" />
     <Compile Include="Algorithms\Coding\Coding.cs" />
     <Compile Include="Algorithms\Coding\ICodable.cs" />
     <Compile Include="Algorithms\Coding\LZW\LzwCoding.cs" />
