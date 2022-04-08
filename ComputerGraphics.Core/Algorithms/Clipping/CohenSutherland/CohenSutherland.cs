@@ -81,6 +81,13 @@ namespace ComputerGraphics.Core.Algorithms.Clipping.CohenSutherland
 
     public static class CohenSutherland
     {
+        /// <summary>
+        /// Method is clipping the line at the border (This algorithm provides only rectangle border)
+        /// </summary>
+        /// <param name="line">A line tuple consists of two points that build a line</param>
+        /// <param name="border">Tuple consists min/max coordinates of rectangle</param>
+        /// <param name="clippedLine">out: Returns tuple withs result of clipping (if TRUE)</param>
+        /// <returns>Returns true if 'clippedLine' is in the border. False if there is no line within the border</returns>
         public static bool Clip(
             (int x1, int y1, int x2, int y2) line,
             (int xMin, int xMax, int yMin, int yMax) border,
@@ -140,6 +147,13 @@ namespace ComputerGraphics.Core.Algorithms.Clipping.CohenSutherland
             }
         }
 
+        /// <summary>
+        /// Method is clipping the list of lines at the border (This algorithm provides only rectangle border)
+        /// </summary>
+        /// <param name="lines">List of lines tuple for buiding lines</param>
+        /// <param name="border">Tuple consists min/max coordinates of rectangle</param>
+        /// <param name="clippedLines">out: Returns list of clipped lines</param>
+        /// <returns>Returns count of clipped lines</returns>
         public static int Clip(
             List<(int x1, int y1, int x2, int y2)> lines,
             (int xMin, int xMax, int yMin, int yMax) border,
