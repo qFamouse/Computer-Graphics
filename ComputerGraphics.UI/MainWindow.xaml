@@ -47,6 +47,7 @@
                         Content="{materialDesign:PackIcon Kind=BlurOff, Size=30}"
                         ToolTip="Primitives"
                         Padding="5"
+                        Command="{Binding PrimitivesCommand}"
                         />
                 </ToolBar>
             </ToolBarTray>

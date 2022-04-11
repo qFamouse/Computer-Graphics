@@ -52,5 +52,16 @@ namespace ComputerGraphics.UI.ViewModel
                 });
             }
         }
+
+        public RelayCommand PrimitivesCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    CurrentSettings = Primitives;
+                });
+            }
+        }
     }
 }
