@@ -8,6 +8,8 @@ namespace ComputerGraphics.UI.ViewModel
     internal class MainViewModel : BaseViewModel
     {
         private Page currentSettings;
+        delegate void SettingsHangler(Page currentSettings);
+        event SettingsHangler OnSettingChanged;
 
         public Page CurrentSettings
         {
@@ -24,11 +26,13 @@ namespace ComputerGraphics.UI.ViewModel
         public Page Mosaic { get; } = new Mosaic();
         public Page OpenSave { get; } = new OpenSave();
         public Page Primitives { get; } = new Primitives();
+        public Page Clipping { get; } = new Clipping();
 
         public MainViewModel()
         {
             Canvas = MainCanvas.GetInstance().Canvas;
-            CurrentSettings = Primitives;
+            CurrentSettings = OpenSave;
+            CurrentSettings = Clipping;
         }
 
         public RelayCommand MosaicCommand
@@ -60,6 +64,17 @@ namespace ComputerGraphics.UI.ViewModel
                 return new RelayCommand(obj =>
                 {
                     CurrentSettings = Primitives;
+                });
+            }
+        }
+
+        public RelayCommand ClippingCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    CurrentSettings = Clipping;
                 });
             }
         }

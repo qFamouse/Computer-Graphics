@@ -79,6 +79,12 @@
     <Compile Include="Interfaces\IRgbColor.cs" />
     <Compile Include="Interfaces\IYiqColor.cs" />
     <Compile Include="Models\MessageBoxEventArgs.cs" />
+    <Compile Include="Pages\Amputation.xaml.cs">
+      <DependentUpon>Amputation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Clipping.xaml.cs">
+      <DependentUpon>Clipping.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Primitives.xaml.cs">
       <DependentUpon>Primitives.xaml</DependentUpon>
     </Compile>
@@ -105,6 +111,8 @@
     <Compile Include="Utils\Images\Bitmap\BitmapWriter.cs" />
     <Compile Include="Utils\Rasterization\Ellipse\CircleBresenham.cs" />
     <Compile Include="Utils\Rasterization\Primitives\Line\LineBresenham.cs" />
+    <Compile Include="ViewModel\AmputationViewModel.cs" />
+    <Compile Include="ViewModel\ClippingViewModel.cs" />
     <Compile Include="ViewModel\CodingViewModel.cs" />
     <Compile Include="ViewModel\ColorConverterViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -129,6 +137,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Amputation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Clipping.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Mosaic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

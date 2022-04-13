@@ -49,6 +49,13 @@
                         Padding="5"
                         Command="{Binding PrimitivesCommand}"
                         />
+
+                    <Button
+                        Content="{materialDesign:PackIcon Kind=ContentCut, Size=30}"
+                        ToolTip="Clipping"
+                        Padding="5"
+                        Command="{Binding ClippingCommand}"
+                        />
                 </ToolBar>
             </ToolBarTray>
         </materialDesign:Card>
