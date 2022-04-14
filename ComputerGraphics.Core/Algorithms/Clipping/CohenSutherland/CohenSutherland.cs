@@ -71,7 +71,7 @@ namespace ComputerGraphics.Core.Algorithms.Clipping.CohenSutherland
                         (clippedLine.x2, clippedLine.y2) = ((int)intersectionPoint.x, (int)intersectionPoint.y);
                 }
 
-                return Clip(clippedLine, border, out clippedLine);
+                return clippedLine == line ? false : Clip(clippedLine, border, out clippedLine);
             }
         }
 
