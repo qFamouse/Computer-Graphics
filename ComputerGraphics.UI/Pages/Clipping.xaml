@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ComputerGraphics.UI.Pages"
+      xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
       xmlns:viewModels="clr-namespace:ComputerGraphics.UI.ViewModel"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="170"
@@ -13,6 +14,16 @@
         <viewModels:ClippingViewModel/>
     </Page.DataContext>
     <StackPanel>
-        <Button Command="{Binding SpacePreparingCommand}">Space Preparing</Button>
+        <GroupBox Header="Working Tools">
+            <ListBox ItemsSource="{Binding Path=Tools}"
+                     DisplayMemberPath="Name"
+                     SelectedValue="{Binding Path=SelectedTool}">
+                <Behaviors:Interaction.Triggers>
+                    <Behaviors:EventTrigger EventName="MouseLeftButtonUp">
+                        <Behaviors:InvokeCommandAction Command="{Binding ItemButtonUpCommand}"/>
+                    </Behaviors:EventTrigger>
+                </Behaviors:Interaction.Triggers>
+            </ListBox>
+        </GroupBox>
     </StackPanel>
 </Page>
