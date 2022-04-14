@@ -8,8 +8,6 @@ namespace ComputerGraphics.UI.ViewModel
     internal class MainViewModel : BaseViewModel
     {
         private Page currentSettings;
-        delegate void SettingsHangler(Page currentSettings);
-        event SettingsHangler OnSettingChanged;
 
         public Page CurrentSettings
         {
