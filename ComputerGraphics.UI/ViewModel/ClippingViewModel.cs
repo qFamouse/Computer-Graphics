@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -18,6 +19,14 @@ namespace ComputerGraphics.UI.ViewModel
 {
     internal class ClippingViewModel : BaseViewModel
     {
+        delegate void KeyHandler(Key key);
+        event KeyHandler OnKeyboard;
+
+        public RelayCommand UpperArrowPresssedCommand => new RelayCommand(obj => OnKeyboard(Key.Up));
+        public RelayCommand RightArrowPresssedCommand => new RelayCommand(obj => OnKeyboard(Key.Right));
+        public RelayCommand BottomArrowPresssedCommand => new RelayCommand(obj => OnKeyboard(Key.Down));
+        public RelayCommand LeftArrowPresssedCommand => new RelayCommand(obj => OnKeyboard(Key.Left));
+
         public Canvas Canvas => MainCanvas.GetInstance().Canvas;
 
         public WriteableBitmap ImageContent { get; private set; }
@@ -147,14 +156,44 @@ namespace ComputerGraphics.UI.ViewModel
             void MouseMove_PreviewXRayRectangle(object sender, System.Windows.Input.MouseEventArgs e) => PreviewXRayRectangle();
             void MouseMove_SaveLowerRightPoint(object sender, System.Windows.Input.MouseEventArgs e) => SaveLowerRightPoint(e.GetPosition(image));
 
+            // Save Rectange Points and Drawing this rectangle
             image.MouseLeftButtonDown += (s, e) => SaveUpperLeftPoint(e.GetPosition(image));
             image.MouseLeftButtonDown += (s, e) => image.MouseMove += MouseMove_SaveLowerRightPoint;
             image.MouseLeftButtonDown += (s, e) => image.MouseMove += MouseMove_PreviewXRayRectangle;
 
             image.MouseLeftButtonUp += (s, e) => image.MouseMove -= MouseMove_PreviewXRayRectangle;
             image.MouseLeftButtonUp += (s, e) => image.MouseMove -= MouseMove_SaveLowerRightPoint;
-            image.MouseLeftButtonUp += (s, e) => PreviewXRayRectangle();
 
+            // Keyboard hotkeys
+            void XRayRectangleShift(Key key)
+            {
+                switch (key)
+                {
+                    case Key.Up:
+                        xRayRectangle.y1--;
+                        xRayRectangle.y2--;
+                        break;
+                    case Key.Right:
+                        xRayRectangle.x1++;
+                        xRayRectangle.x2++;
+                        break;
+                    case Key.Down:
+                        xRayRectangle.y1++;
+                        xRayRectangle.y2++;
+                        break;
+                    case Key.Left:
+                        xRayRectangle.x1--;
+                        xRayRectangle.x2--;
+                        break;
+                }
+
+                PreviewXRayRectangle();
+            }
+
+            image.MouseLeftButtonUp += (s, e) => OnKeyboard += XRayRectangleShift;
+            image.MouseLeftButtonDown += (s, e) => OnKeyboard -= XRayRectangleShift;
+
+            // When leave stop drawing
             image.MouseLeave += (s, e) => image.MouseMove -= MouseMove_PreviewXRayRectangle;
             image.MouseLeave += (s, e) => image.MouseMove -= MouseMove_SaveLowerRightPoint;
         }
