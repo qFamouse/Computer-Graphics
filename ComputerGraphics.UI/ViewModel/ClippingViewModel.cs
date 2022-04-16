@@ -149,6 +149,8 @@ namespace ComputerGraphics.UI.ViewModel
             image.MouseLeftButtonUp += (s, e) => image.MouseMove -= MouseMove_SaveLowerRightPoint;
             image.MouseLeftButtonUp += (s, e) => PreviewXRayRectangle();
 
+            image.MouseLeave += (s, e) => image.MouseMove -= MouseMove_PreviewXRayRectangle;
+            image.MouseLeave += (s, e) => image.MouseMove -= MouseMove_SaveLowerRightPoint;
         }
 
         #endregion
