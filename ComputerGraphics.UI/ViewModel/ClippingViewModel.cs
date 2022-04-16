@@ -60,6 +60,12 @@ namespace ComputerGraphics.UI.ViewModel
         {
             Image image = NewImage();
 
+            ImageContent.Clear();
+            foreach (var line in DrawingLines)
+            {
+                ImageContent.DrawLine(line.x1, line.y1, line.x2, line.y2, Colors.Blue);
+            }
+
             (int x1, int y1, int x2, int y2) newLine = (0, 0, 0, 0);
 
             void StylusDown(Point point)
