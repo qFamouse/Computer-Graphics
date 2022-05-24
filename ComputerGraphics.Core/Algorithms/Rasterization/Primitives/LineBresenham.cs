@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ComputerGraphics.UI.Utils.Rasterization.Primitives.Line
+namespace ComputerGraphics.Core.Algorithms.Rasterization.Primitives
 {
     internal static class LineBresenham
     {
@@ -109,7 +109,7 @@ namespace ComputerGraphics.UI.Utils.Rasterization.Primitives.Line
                         break;
                     }
 
-                    error += + dx;
+                    error += +dx;
                     y += sy;
                 }
             }

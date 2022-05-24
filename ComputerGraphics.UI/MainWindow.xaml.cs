@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using ComputerGraphics.UI.Utils;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ComputerGraphics.UI
@@ -8,7 +9,8 @@ namespace ComputerGraphics.UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public Canvas AppCanvas { get; set; }
+        //public Canvas AppCanvas { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,6 +29,13 @@ namespace ComputerGraphics.UI
             var coding = new Windows.Coding();
             coding.Owner = this;
             coding.Show();
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var canvas = MainCanvas.GetInstance();
+            canvas.Canvas.Height = Height - 56;
+            canvas.Canvas.Width = Width - 231;
         }
     }
 }
