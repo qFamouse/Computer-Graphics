@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ComputerGraphics.Core.Entities
 {
-    public sealed class ClippingTool
+    public sealed class ActionTool
     {
         public string Name { get; set; }
         public Action Action { get; set; }

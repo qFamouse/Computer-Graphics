@@ -39,10 +39,10 @@ namespace ComputerGraphics.UI.ViewModel
 
         private CollectionView _tools;
 
-        private ClippingTool _selectedTool;
+        private ActionTool _selectedTool;
         public CollectionView Tools => _tools;
 
-        public ClippingTool SelectedTool
+        public ActionTool SelectedTool
         {
             get { return _selectedTool; }
             set
@@ -313,14 +313,14 @@ namespace ComputerGraphics.UI.ViewModel
 
         public ClippingViewModel()
         {
-            var tools = new List<ClippingTool>()
+            var tools = new List<ActionTool>()
             {
-                new ClippingTool()
+                new ActionTool()
                 {
                     Name = "Line Clipping",
                     Action = LineClipping
                 },
-                new ClippingTool()
+                new ActionTool()
                 {
                     Name = "Polyline Clipping",
                     Action = PolygonClipping

@@ -69,7 +69,7 @@
     <Compile Include="Algorithms\Rasterization\Primitives\CustomPoint.cs" />
     <Compile Include="Algorithms\Rasterization\Primitives\CustomPolygon.cs" />
     <Compile Include="Configurations\PrimitivesConfiguration.cs" />
-    <Compile Include="Entities\ClippingTool.cs" />
+    <Compile Include="Entities\ActionTool.cs" />
     <Compile Include="Entities\PrimitiveFigure.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
