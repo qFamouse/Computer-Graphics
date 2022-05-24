@@ -1,4 +1,6 @@
 ﻿using ComputerGraphics.Core.Algorithms.Clipping.CohenSutherland;
+using ComputerGraphics.Core.Algorithms.Clipping.WeilerAtherton;
+using ComputerGraphics.Core.Algorithms.Rasterization.Primitives;
 using ComputerGraphics.Core.Entities;
 using ComputerGraphics.UI.Models;
 using ComputerGraphics.UI.Utils;
@@ -65,7 +67,7 @@ namespace ComputerGraphics.UI.ViewModel
 
         #region Tools
 
-        private void DrawTool()
+        private void LineClipping()
         {
             Image image = NewImage();
 
@@ -100,13 +102,15 @@ namespace ComputerGraphics.UI.ViewModel
 
             image.MouseLeftButtonDown += (object sender, System.Windows.Input.MouseButtonEventArgs e) => StylusDown(e.GetPosition(image));
             image.MouseLeftButtonUp += (object sender, System.Windows.Input.MouseButtonEventArgs e) => StylusUp(e.GetPosition(image));
-            image.MouseRightButtonDown += (object sender, System.Windows.Input.MouseButtonEventArgs e) => ClearContent();
-        }
+            image.MouseDown += (object sender, System.Windows.Input.MouseButtonEventArgs e) =>
+            {
+                if (e.ChangedButton == MouseButton.Middle)
+                {
+                    ClearContent();
+                }
+            };
 
-        private void RectagleXRayTool()
-        {
-            Image image = NewImage();
-
+            // X-Ray
             (int x1, int y1, int x2, int y2) xRayRectangle = (0, 0, 0, 0);
 
             void SaveUpperLeftPoint(Point point)
@@ -126,7 +130,7 @@ namespace ComputerGraphics.UI.ViewModel
                 {
                     xRayRectangle.y2 = (int)point.Y;
                 }
-                
+
                 if (xRayRectangle.x1 > point.X)
                 {
                     xRayRectangle.x2 = xRayRectangle.x1;
@@ -157,12 +161,12 @@ namespace ComputerGraphics.UI.ViewModel
             void MouseMove_SaveLowerRightPoint(object sender, System.Windows.Input.MouseEventArgs e) => SaveLowerRightPoint(e.GetPosition(image));
 
             // Save Rectange Points and Drawing this rectangle
-            image.MouseLeftButtonDown += (s, e) => SaveUpperLeftPoint(e.GetPosition(image));
-            image.MouseLeftButtonDown += (s, e) => image.MouseMove += MouseMove_SaveLowerRightPoint;
-            image.MouseLeftButtonDown += (s, e) => image.MouseMove += MouseMove_PreviewXRayRectangle;
+            image.MouseRightButtonDown += (s, e) => SaveUpperLeftPoint(e.GetPosition(image));
+            image.MouseRightButtonDown += (s, e) => image.MouseMove += MouseMove_SaveLowerRightPoint;
+            image.MouseRightButtonDown += (s, e) => image.MouseMove += MouseMove_PreviewXRayRectangle;
 
-            image.MouseLeftButtonUp += (s, e) => image.MouseMove -= MouseMove_PreviewXRayRectangle;
-            image.MouseLeftButtonUp += (s, e) => image.MouseMove -= MouseMove_SaveLowerRightPoint;
+            image.MouseRightButtonUp += (s, e) => image.MouseMove -= MouseMove_PreviewXRayRectangle;
+            image.MouseRightButtonUp += (s, e) => image.MouseMove -= MouseMove_SaveLowerRightPoint;
 
             // Keyboard hotkeys
             void XRayRectangleShift(Key key)
@@ -198,6 +202,95 @@ namespace ComputerGraphics.UI.ViewModel
             image.MouseLeave += (s, e) => image.MouseMove -= MouseMove_SaveLowerRightPoint;
         }
 
+        private void PolygonClipping()
+        {
+            Image image = NewImage();
+            ImageContent.Clear();
+
+            List<int> polygonPoints = new List<int>();
+            List<int> clipPolygonPoints = new List<int>();
+
+            CustomPolygon polygon = new CustomPolygon();
+            CustomPolygon clipPolygon = new CustomPolygon();
+
+            IEnumerable<CustomLine> clippedPolygonLines = null;
+
+            void AddPolygonPoint(object sender, System.Windows.Input.MouseButtonEventArgs e)
+            {
+                Point point = e.GetPosition(image);
+                int x = (int)point.X;
+                int y = (int)point.Y;
+
+                polygonPoints.Add(x);
+                polygonPoints.Add(y);
+
+                ImageContent.FillEllipseCentered(x, y, 1, 1, Colors.Blue);
+            }
+
+            void AddClipPolygonPoint(object sender, System.Windows.Input.MouseButtonEventArgs e)
+            {
+                Point point = e.GetPosition(image);
+                int x = (int)point.X;
+                int y = (int)point.Y;
+
+                clipPolygonPoints.Add(x);
+                clipPolygonPoints.Add(y);
+
+                ImageContent.FillEllipseCentered(x, y, 1, 1, Colors.Red);
+            }
+
+            void PolygonShowing(object sender, MouseWheelEventArgs e)
+            {
+                ImageContent.Clear();
+                if (e.Delta > 0 && clippedPolygonLines != null)
+                {
+                    foreach (var line in clippedPolygonLines)
+                    {
+                        ImageContent.DrawLine((int)line.P1.X, (int)line.P1.Y, (int)line.P2.X, (int)line.P2.Y, Colors.Blue);
+                    }
+                }
+                else
+                {
+                    ImageContent.DrawPolyline(polygonPoints.ToArray(), Colors.Blue);
+                    ImageContent.DrawPolyline(clipPolygonPoints.ToArray(), Colors.Red);
+                }
+            }
+
+
+            image.MouseLeftButtonDown += AddPolygonPoint;
+            image.MouseRightButtonDown += AddClipPolygonPoint;
+            image.MouseDown += (object sender, System.Windows.Input.MouseButtonEventArgs e) =>
+            {
+                if (e.ChangedButton == MouseButton.Middle && polygonPoints.Count > 0 && clipPolygonPoints.Count > 0)
+                {
+                    image.MouseLeftButtonDown -= AddPolygonPoint;
+                    image.MouseRightButtonDown -= AddClipPolygonPoint;
+
+                    // Add First points
+                    polygonPoints.AddRange(polygonPoints.Take(2).ToList());
+                    clipPolygonPoints.AddRange(clipPolygonPoints.Take(2).ToList());
+
+                    image.MouseWheel += PolygonShowing;
+
+                    ImageContent.Clear();
+
+                    var polygonPointsArray = polygonPoints.ToArray();
+                    var clipPolygonPointsArray = clipPolygonPoints.ToArray();
+
+                    ImageContent.DrawPolyline(polygonPointsArray, Colors.Blue);
+                    ImageContent.DrawPolyline(clipPolygonPointsArray, Colors.Red);
+
+                    polygon = new CustomPolygon(polygonPointsArray);
+                    clipPolygon = new CustomPolygon(clipPolygonPointsArray);
+
+                    clippedPolygonLines = WeilerAthertonAlgorithm.Clip(polygon, clipPolygon);
+                }
+            };
+
+
+
+        }
+
         #endregion
 
         private Image NewImage()
@@ -220,15 +313,14 @@ namespace ComputerGraphics.UI.ViewModel
             {
                 new ClippingTool()
                 {
-                    Name = "Draw",
-                    Action = DrawTool
+                    Name = "Line Clipping",
+                    Action = LineClipping
                 },
-
                 new ClippingTool()
                 {
-                    Name = "Rectangle X-Ray",
-                    Action = RectagleXRayTool
-                }
+                    Name = "Polyline Clipping",
+                    Action = PolygonClipping
+                },
             };
 
             _tools = new CollectionView(tools);

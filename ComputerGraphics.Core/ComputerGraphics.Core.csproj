@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Algorithms\Clipping\CohenSutherland\CohenSutherland.cs" />
     <Compile Include="Algorithms\Clipping\CohenSutherland\CohenSutherlandCode.cs" />
+    <Compile Include="Algorithms\Clipping\WeilerAtherton\WeilerAthertonAlgorithm.cs" />
     <Compile Include="Algorithms\Coding\Coding.cs" />
     <Compile Include="Algorithms\Coding\ICodable.cs" />
     <Compile Include="Algorithms\Coding\LZW\LzwCoding.cs" />
@@ -63,7 +64,10 @@
     <Compile Include="Algorithms\Images\Bitmap\BitmapReader.cs" />
     <Compile Include="Algorithms\Images\Bitmap\BitmapWriter.cs" />
     <Compile Include="Algorithms\Rasterization\Ellipse\CircleBresenham.cs" />
-    <Compile Include="Algorithms\Rasterization\Primitives\Line\LineBresenham.cs" />
+    <Compile Include="Algorithms\Rasterization\Primitives\CustomLine.cs" />
+    <Compile Include="Algorithms\Rasterization\Primitives\LineBresenham.cs" />
+    <Compile Include="Algorithms\Rasterization\Primitives\CustomPoint.cs" />
+    <Compile Include="Algorithms\Rasterization\Primitives\CustomPolygon.cs" />
     <Compile Include="Configurations\PrimitivesConfiguration.cs" />
     <Compile Include="Entities\ClippingTool.cs" />
     <Compile Include="Entities\PrimitiveFigure.cs" />
@@ -91,8 +95,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Algorithms\Rasterization\Primitives\Ellipse\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
