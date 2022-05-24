@@ -77,6 +77,10 @@
     <Compile Include="Algorithms\Rasterization\Primitives\LineBresenham.cs" />
     <Compile Include="Algorithms\Rasterization\Primitives\CustomPoint.cs" />
     <Compile Include="Algorithms\Rasterization\Primitives\CustomPolygon.cs" />
+    <Compile Include="Algorithms\Rasterization\RasterisationAlgorithms\BresenhamAlgorithm.cs" />
+    <Compile Include="Algorithms\Rasterization\RasterisationAlgorithms\IRasterisationAlgorithm.cs" />
+    <Compile Include="Algorithms\Rasterization\RasterisationAlgorithms\RasterizationAlgorithms.cs" />
+    <Compile Include="Algorithms\Rasterization\RasterisationAlgorithms\WuAlgorithm.cs" />
     <Compile Include="Configurations\PrimitivesConfiguration.cs" />
     <Compile Include="Entities\ActionTool.cs" />
     <Compile Include="Entities\PrimitiveFigure.cs" />
