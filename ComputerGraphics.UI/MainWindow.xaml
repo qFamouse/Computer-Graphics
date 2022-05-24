@@ -11,7 +11,8 @@
         WindowStartupLocation="CenterScreen"
         Title="Computer Graphics" Icon="icon.ico"
         MinWidth="850" MinHeight="550"
-        Width="850" Height="550">
+        Width="850" Height="550"
+        SizeChanged="Window_SizeChanged">
     <Window.DataContext>
         <viewModels:MainViewModel/>
     </Window.DataContext>
@@ -56,13 +57,20 @@
                         Padding="5"
                         Command="{Binding ClippingCommand}"
                         />
+
+                    <Button
+                        Content="{materialDesign:PackIcon Kind=AtomVariant, Size=30}"
+                        ToolTip="Affine transformations"
+                        Padding="5"
+                        Command="{Binding ClippingCommand}"
+                        />
                 </ToolBar>
             </ToolBarTray>
         </materialDesign:Card>
         <materialDesign:Card DockPanel.Dock="Right">
             <Frame NavigationUIVisibility="Hidden" Width="170" Content="{Binding CurrentSettings, Mode=TwoWay}"></Frame>
         </materialDesign:Card>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Content="{Binding Canvas}">
+        <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Content="{Binding Canvas}">
         </ScrollViewer>
     </DockPanel>
 </Window>

@@ -297,9 +297,13 @@ namespace ComputerGraphics.UI.ViewModel
         {
             Canvas.Children.Clear();
 
+            ImageContent = BitmapFactory.New((int)Canvas.Width, (int)Canvas.Height);
+
             Image image = new Image()
             {
-                Source = ImageContent
+                Source = ImageContent,
+                Width = Canvas.Width,
+                Height = Canvas.Height
             };
 
             Canvas.Children.Add(image);
