@@ -25,5 +25,16 @@
                 </Behaviors:Interaction.Triggers>
             </ListBox>
         </GroupBox>
+
+        <ListBox HorizontalAlignment="Center"
+                 materialDesign:ListBoxItemAssist.ShowSelection="False">
+            <ListBoxItem Content="{materialDesign:PackIcon Kind=GamepadOutline, Size=50}" ToolTip="Keyboard Control"/>
+            <ListBox.InputBindings>
+                <KeyBinding Key="Up" Command="{Binding UpperArrowPresssedCommand}"/>
+                <KeyBinding Key="Right" Command="{Binding RightArrowPresssedCommand}"/>
+                <KeyBinding Key="Down" Command="{Binding BottomArrowPresssedCommand}"/>
+                <KeyBinding Key="Left" Command="{Binding LeftArrowPresssedCommand}"/>
+            </ListBox.InputBindings>
+        </ListBox>
     </StackPanel>
 </Page>
