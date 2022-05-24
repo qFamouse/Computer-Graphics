@@ -55,6 +55,17 @@ namespace ComputerGraphics.UI.ViewModel
             }
         }
 
+        public RelayCommand ItemButtonUpCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    SelectedTool.Action.Invoke();
+                });
+            }
+        }
+
         #endregion
 
         private void Drawing()
