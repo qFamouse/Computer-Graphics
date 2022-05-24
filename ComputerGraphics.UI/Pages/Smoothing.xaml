@@ -14,7 +14,7 @@
         <viewModels:SmoothingViewModel/>
     </Page.DataContext>
     <StackPanel>
-        <GroupBox Header="Working Tools">
+        <GroupBox Header="Working Tools" Margin="0 0 0 10">
             <ListBox ItemsSource="{Binding Path=Tools}"
                      DisplayMemberPath="Name"
                      SelectedValue="{Binding Path=SelectedTool}">
@@ -25,5 +25,11 @@
                 </Behaviors:Interaction.Triggers>
             </ListBox>
         </GroupBox>
+        <ToggleButton
+            Content="{materialDesign:PackIcon Kind=Heart, Size=21}"
+            Style="{StaticResource MaterialDesignFlatPrimaryToggleButton}"
+            ToolTip="Toggle Smoothing"
+            IsChecked="{Binding Path=EnabledSmoothing, Mode=TwoWay}"/>
+        
     </StackPanel>
 </Page>

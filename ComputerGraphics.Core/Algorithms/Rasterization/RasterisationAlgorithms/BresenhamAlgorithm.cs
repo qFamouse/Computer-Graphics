@@ -7,48 +7,61 @@ namespace ComputerGraphics.Core.Algorithms.Rasterization.RasterisationAlgorithms
 {
     public class BresenhamAlgorithm : IRasterisationAlgorithm
     {
+        // sourse: https://grafika.me/node/9
         public void DrawLine(WriteableBitmap bitmap, CustomLine line, Color color)
         {
-            var x1 = (int)line.P1.X;
-            var y1 = (int)line.P1.Y;
-            var x2 = (int)line.P2.X;
-            var y2 = (int)line.P2.Y;
+            var x0 = (int)line.P1.X;
+            var y0 = (int)line.P1.Y;
+            var x1 = (int)line.P2.X;
+            var y1 = (int)line.P2.Y;
 
-            if (x1 == x2 && y1 == y2)
-            {
-                bitmap.SetPixel(x1, y1, color);
-                return;
-            }
+            //Изменения координат
+            int dx = (x1 > x0) ? (x1 - x0) : (x0 - x1);
+            int dy = (y1 > y0) ? (y1 - y0) : (y0 - y1);
+            //Направление приращения
+            int sx = (x1 >= x0) ? (1) : (-1);
+            int sy = (y1 >= y0) ? (1) : (-1);
 
-            var steep = Math.Abs(y2 - y1) > Math.Abs(x2 - x1); // Проверяем рост отрезка по оси икс и по оси игрек
-            // Отражаем линию по диагонали, если угол наклона слишком большой
-            if (steep)
+            if (dy < dx)
             {
-                (x1, y1) = (y1, x1);
-                (x2, y2) = (y2, x2);
-            }
-
-            // Если линия растёт не слева направо, то меняем начало и конец отрезка местами
-            if (x1 > x2)
-            {
-                (x1, x2) = (x2, x1);
-                (y1, y2) = (y2, y1);
-            }
-
-            var dx = x2 - x1;
-            var dy = Math.Abs(y2 - y1);
-            var error = dx /
-                        2; // Здесь используется оптимизация с умножением на dx, чтобы избавиться от лишних дробей
-            var yStep = y1 < y2 ? 1 : -1; // Выбираем направление роста координаты y
-            var y = y1;
-            for (var x = x1; x <= x2; x++)
-            {
-                bitmap.SetPixel(steep ? y : x, steep ? x : y, color); // Не забываем вернуть координаты на место
-                error -= dy;
-                if (error < 0)
+                int d = (dy << 1) - dx;
+                int d1 = dy << 1;
+                int d2 = (dy - dx) << 1;
+                bitmap.SetPixel(x0, y0, color);
+                int x = x0 + sx;
+                int y = y0;
+                for (int i = 1; i <= dx; i++)
                 {
-                    y += yStep;
-                    error += dx;
+                    if (d > 0)
+                    {
+                        d += d2;
+                        y += sy;
+                    }
+                    else
+                        d += d1;
+                    bitmap.SetPixel(x, y, color);
+                    x += sx;
+                }
+            }
+            else
+            {
+                int d = (dx << 1) - dy;
+                int d1 = dx << 1;
+                int d2 = (dx - dy) << 1;
+                bitmap.SetPixel(x0, y0, color);
+                int x = x0;
+                int y = y0 + sy;
+                for (int i = 1; i <= dy; i++)
+                {
+                    if (d > 0)
+                    {
+                        d += d2;
+                        x += sx;
+                    }
+                    else
+                        d += d1;
+                    bitmap.SetPixel(x, y, color);
+                    y += sy;
                 }
             }
         }

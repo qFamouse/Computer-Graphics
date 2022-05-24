@@ -1,4 +1,6 @@
-﻿using ComputerGraphics.Core.Entities;
+﻿using ComputerGraphics.Core.Algorithms.Rasterization.Primitives;
+using ComputerGraphics.Core.Algorithms.Rasterization.RasterisationAlgorithms;
+using ComputerGraphics.Core.Entities;
 using ComputerGraphics.UI.Models;
 using ComputerGraphics.UI.Utils;
 using System;
@@ -18,7 +20,7 @@ namespace ComputerGraphics.UI.ViewModel
     internal class SmoothingViewModel : BaseViewModel
     {
         public Canvas Canvas => MainCanvas.GetInstance().Canvas;
-
+        public bool EnabledSmoothing { get; set; } = false;
         public List<(int x1, int y1, int x2, int y2)> DrawingLines { get; private set; }
 
         public WriteableBitmap ImageContent { get; private set; }
@@ -94,7 +96,18 @@ namespace ComputerGraphics.UI.ViewModel
                 newLine.y2 = (int)point.Y;
 
                 DrawingLines.Add(newLine);
-                ImageContent.DrawLine(newLine.x1, newLine.y1, newLine.x2, newLine.y2, Colors.Blue);
+                CustomPoint p1 = new CustomPoint(newLine.x1, newLine.y1);
+                CustomPoint p2 = new CustomPoint(newLine.x2, newLine.y2);
+                CustomLine line = new CustomLine(p1, p2);
+
+                if (EnabledSmoothing)
+                {
+                    RasterizationAlgorithms.Wu.DrawLine(ImageContent, line, Colors.Green);
+                }
+                else
+                {
+                    ImageContent.DrawLine(newLine.x1, newLine.y1, newLine.x2, newLine.y2, Colors.Purple);
+                }
             }
 
             void ClearContent()
