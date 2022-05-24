@@ -79,6 +79,9 @@
     <Compile Include="Interfaces\IRgbColor.cs" />
     <Compile Include="Interfaces\IYiqColor.cs" />
     <Compile Include="Models\MessageBoxEventArgs.cs" />
+    <Compile Include="Pages\AffineTransformations.xaml.cs">
+      <DependentUpon>AffineTransformations.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Clipping.xaml.cs">
       <DependentUpon>Clipping.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,7 @@
     <Compile Include="Utils\Images\Bitmap\BitmapWriter.cs" />
     <Compile Include="Utils\Rasterization\Ellipse\CircleBresenham.cs" />
     <Compile Include="Utils\Rasterization\Primitives\Line\LineBresenham.cs" />
+    <Compile Include="ViewModel\AffineTransformationsViewModel.cs" />
     <Compile Include="ViewModel\ClippingViewModel.cs" />
     <Compile Include="ViewModel\CodingViewModel.cs" />
     <Compile Include="ViewModel\ColorConverterViewModel.cs" />
@@ -133,6 +137,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AffineTransformations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Clipping.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

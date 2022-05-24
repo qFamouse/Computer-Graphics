@@ -26,11 +26,13 @@ namespace ComputerGraphics.UI.ViewModel
         public Page Primitives { get; } = new Primitives();
         public Page Clipping { get; } = new Clipping();
 
+        public Page AffineTransformations { get; } = new AffineTransformations();
+
         public MainViewModel()
         {
             Canvas = MainCanvas.GetInstance().Canvas;
             CurrentSettings = OpenSave;
-            CurrentSettings = Clipping;
+            CurrentSettings = AffineTransformations;
         }
 
         public RelayCommand MosaicCommand
@@ -73,6 +75,17 @@ namespace ComputerGraphics.UI.ViewModel
                 return new RelayCommand(obj =>
                 {
                     CurrentSettings = Clipping;
+                });
+            }
+        }
+
+        public RelayCommand AffineTransformationsCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    CurrentSettings = AffineTransformations;
                 });
             }
         }

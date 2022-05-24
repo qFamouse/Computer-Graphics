@@ -62,7 +62,7 @@
                         Content="{materialDesign:PackIcon Kind=AtomVariant, Size=30}"
                         ToolTip="Affine transformations"
                         Padding="5"
-                        Command="{Binding ClippingCommand}"
+                        Command="{Binding AffineTransformationsCommand}"
                         />
                 </ToolBar>
             </ToolBarTray>
