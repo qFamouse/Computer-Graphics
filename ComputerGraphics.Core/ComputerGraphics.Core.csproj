@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MathNet.Numerics, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.5.0.0\lib\net48\MathNet.Numerics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -51,6 +54,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithms\AffineTransformations\AffineDilatation.cs" />
+    <Compile Include="Algorithms\AffineTransformations\AffineRotation.cs" />
+    <Compile Include="Algorithms\AffineTransformations\AffineTransformations.cs" />
+    <Compile Include="Algorithms\AffineTransformations\AffineTransformationsApplier.cs" />
+    <Compile Include="Algorithms\AffineTransformations\AffineTranslation.cs" />
+    <Compile Include="Algorithms\AffineTransformations\IAffineTransformation.cs" />
     <Compile Include="Algorithms\Clipping\CohenSutherland\CohenSutherland.cs" />
     <Compile Include="Algorithms\Clipping\CohenSutherland\CohenSutherlandCode.cs" />
     <Compile Include="Algorithms\Clipping\WeilerAtherton\WeilerAthertonAlgorithm.cs" />
