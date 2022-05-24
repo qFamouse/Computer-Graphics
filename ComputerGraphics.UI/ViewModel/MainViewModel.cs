@@ -25,14 +25,14 @@ namespace ComputerGraphics.UI.ViewModel
         public Page OpenSave { get; } = new OpenSave();
         public Page Primitives { get; } = new Primitives();
         public Page Clipping { get; } = new Clipping();
-
         public Page AffineTransformations { get; } = new AffineTransformations();
+        public Page Smoothing { get; } = new Smoothing();
 
         public MainViewModel()
         {
             Canvas = MainCanvas.GetInstance().Canvas;
             CurrentSettings = OpenSave;
-            CurrentSettings = AffineTransformations;
+            CurrentSettings = Smoothing;
         }
 
         public RelayCommand MosaicCommand
@@ -86,6 +86,17 @@ namespace ComputerGraphics.UI.ViewModel
                 return new RelayCommand(obj =>
                 {
                     CurrentSettings = AffineTransformations;
+                });
+            }
+        }
+
+        public RelayCommand SmoothingCommand
+        {
+            get
+            {
+                return new RelayCommand(obj =>
+                {
+                    CurrentSettings = Smoothing;
                 });
             }
         }

@@ -64,6 +64,13 @@
                         Padding="5"
                         Command="{Binding AffineTransformationsCommand}"
                         />
+
+                    <Button
+                        Content="{materialDesign:PackIcon Kind=QualityHigh, Size=30}"
+                        ToolTip="Smoothing"
+                        Padding="5"
+                        Command="{Binding SmoothingCommand}"
+                        />
                 </ToolBar>
             </ToolBarTray>
         </materialDesign:Card>

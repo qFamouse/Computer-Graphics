@@ -88,6 +88,9 @@
     <Compile Include="Pages\Primitives.xaml.cs">
       <DependentUpon>Primitives.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Smoothing.xaml.cs">
+      <DependentUpon>Smoothing.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Coding\Coding.cs" />
     <Compile Include="Utils\Coding\ICodable.cs" />
     <Compile Include="Utils\Coding\LZW\LzwCoding.cs" />
@@ -119,6 +122,7 @@
     <Compile Include="ViewModel\MosaicViewModel.cs" />
     <Compile Include="ViewModel\OpenSaveViewModel.cs" />
     <Compile Include="ViewModel\PrimitivesViewModel.cs" />
+    <Compile Include="ViewModel\SmoothingViewModel.cs" />
     <Compile Include="Windows\Coding.xaml.cs">
       <DependentUpon>Coding.xaml</DependentUpon>
     </Compile>
@@ -154,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Primitives.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Smoothing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
