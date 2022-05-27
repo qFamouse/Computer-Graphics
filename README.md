@@ -1,0 +1,7 @@
+# Computer-Graphics
+[Student Work] Demo WPF Application for learning computer graphics algorithms
+
+# Screenshots
+![ComputerGraphics UI_9Q9x8P3nNQ](https://user-images.githubusercontent.com/30534091/170670208-6c45f4c5-06c7-4e16-bbb9-5d6995646d8d.png)
+![ComputerGraphics UI_aO7N6SwCuF](https://user-images.githubusercontent.com/30534091/170670225-70222b21-8d3e-41c4-ba92-39e1e0e01e82.png)
+![ComputerGraphics UI_Y5nisbusp4](https://user-images.githubusercontent.com/30534091/170670237-3b56496c-4c8b-4fa6-a79a-58b45ccdd854.png)
