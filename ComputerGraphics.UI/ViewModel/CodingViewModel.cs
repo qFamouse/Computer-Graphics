@@ -67,7 +67,7 @@ namespace ComputerGraphics.UI.ViewModel
                     {
                         OutputData = String.Join(" ", _currentCoding.Encode(InputData));
                     }
-                    catch (NullReferenceException e)
+                    catch (NullReferenceException)
                     {
                         ShowErrorMessageBox("Please, choose the algorithm!");
                     }
@@ -91,7 +91,7 @@ namespace ComputerGraphics.UI.ViewModel
                         byte[] encodedCharacters = InputData.Split(' ').Select(s => Byte.Parse(s)).ToArray();
                         OutputData = _currentCoding.Decode(encodedCharacters);
                     }
-                    catch (NullReferenceException e)
+                    catch (NullReferenceException)
                     {
                         ShowErrorMessageBox("Please, choose the algorithm!");
                     }
