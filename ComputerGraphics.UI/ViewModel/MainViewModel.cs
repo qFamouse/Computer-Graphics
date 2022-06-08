@@ -32,7 +32,6 @@ namespace ComputerGraphics.UI.ViewModel
         {
             Canvas = MainCanvas.GetInstance().Canvas;
             CurrentSettings = OpenSave;
-            CurrentSettings = Smoothing;
         }
 
         public RelayCommand MosaicCommand
